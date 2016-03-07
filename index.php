@@ -35,7 +35,7 @@ session_start();
 				</form><!-- /form -->
 				<!-- FOOTER -->
 				<footer>
-					<p>&copy 2016 Company, Inc.</p>
+					<p>&copy 2016 Buell Enterprises.</p>
 					<p><a href="#">Privacy</a> &#8901 <a href="#">Terms</a></p>
 				</footer>
 			</div><!-- /card-container -->

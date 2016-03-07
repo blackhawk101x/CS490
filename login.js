@@ -16,45 +16,30 @@ $(document).ready(function(){
 		username=$("#username").val();
 		password=$("#inputPW").val();
 		
-		// ajax request
-		/*
-		$.ajax({
-			type: "POST",
-			url: "https://web.njit.edu/~ve23/middleware.php",
-			data: "name="+username+"&pwd="+password,
-			success: function(resp){
-				
-				var tmp = JSON.parse(resp);
-				if(tmp['valid']){
-					//console.log("Success");
-					window.location="home.php";
-				}
-				else{
-					$("#errorMessage").css("display","")
-				}
-			} // end of callback function
-		}); // end of ajax
-		*/
-		
+		// https://web.njit.edu/~ve23/middleware.php
 		
 		$.ajax({
 			type: "POST",
 			url: "Tester.php",
 			data: {'name' : username, 'pwd' : password},
 			success: function(resp){
-				var tmp = JSON.parse(resp);
-				//tmp["UCID"]=username;
-				console.log(tmp);
-				$.ajax({
-					type: "POST",
-					url: "sessionSet.php",
-					data: tmp,
-					success: function(resp){
-						console.log(resp);
-						//location.replace='home.php';
-						window.location.href="home.php";
-					}
-				});
+				var tmp = JSON.parse(resp); // parsing the JSON
+				if(!tmp["isNJIT"] && !tmp["isInDB"]){
+					$("#errorMessage").css("display","");
+					return; // breaking out of the function
+				}else{
+					tmp["UCID"]=username;
+					$.ajax({
+						type: "POST",
+						url: "sessionSet.php",
+						data: tmp,
+						success: function(resp){
+							//console.log(resp);
+							window.location.href="dashboard.php";
+						}
+					});	// end of ajax call
+				} // end of else
+				
 			} // end of callback function
 		}); // end of ajax
 		
