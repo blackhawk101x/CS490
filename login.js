@@ -20,15 +20,40 @@ $(document).ready(function(){
 		
 		$.ajax({
 			type: "POST",
-			url: "Tester.php",
+			url: "https://web.njit.edu/~ve23/middleware.php",
 			data: {'name' : username, 'pwd' : password},
 			success: function(resp){
 				var tmp = JSON.parse(resp); // parsing the JSON
-				if(!tmp["isNJIT"] && !tmp["isInDB"]){
-					$("#errorMessage").css("display","");
-					return; // breaking out of the function
-				}else{
-					tmp["UCID"]=username;
+				console.log(resp);
+				//return;
+								
+				if(!tmp["isNJIT"]){
+					$("#successNJIT").css("display","none");
+					$("#errorNJIT").css("display","");
+				}
+				else{
+					$("#errorNJIT").css("display","none");
+					$("#successNJIT").css("display","");
+				}
+				
+				if(!tmp["isDB"]){
+					$("#successSyst").css("display","none");
+					$("#errorSyst").css("display","");
+				}
+				else{
+					$("#errorSyst").css("display","none");
+					$("#successSyst").css("display","");	
+				}
+				
+			} // end of callback function
+		}); // end of ajax
+		
+		
+	return false;
+	});
+	
+	/*
+	tmp["UCID"]=username;
 					$.ajax({
 						type: "POST",
 						url: "sessionSet.php",
@@ -38,14 +63,8 @@ $(document).ready(function(){
 							window.location.href="dashboard.php";
 						}
 					});	// end of ajax call
-				} // end of else
-				
-			} // end of callback function
-		}); // end of ajax
-		
-		
-	return false;
-	});
+	*/
+	
 	
 	//https://webauth.njit.edu/idp/Authn/UserPassword?j_username=dkb9&j_password=MeowMeow21
 	

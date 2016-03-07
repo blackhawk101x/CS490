@@ -22,11 +22,31 @@ session_start();
 				<img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
 				<p id="profile-name" class="profile-name-card"></p>
 				<form class="form-signin" id="loginForm">
-					<div class="alert alert-danger" role="alert" style="display:none" id="errorMessage">
+				
+					<div class="alert alert-danger" role="alert" style="display:none" id="errorNJIT">
 						<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
 						<span class="sr-only">Error:</span>
-						Invalid username or password
+						<div id="messageContent">
+							NJIT did NOT recognize that username and/or password
+						</div>
 					</div>
+					
+					<div class="alert alert-success" role="alert" style="display:none" id="successNJIT">
+						Success! NJIT recognized that username and password
+					</div>
+					
+					<div class="alert alert-danger" role="alert" style="display:none" id="errorSyst">
+						<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+						<span class="sr-only">Error:</span>
+						<div id="messageContent">
+							Our system did NOT recognize that username and/or password
+						</div>
+					</div>
+					
+					<div class="alert alert-success" role="alert" style="display:none" id="successSyst">
+						Success! Our system recognized that username
+					</div>
+					
 					<span id="reauth-email" class="reauth-email"></span>
 					<input type="username" id="username" class="form-control" placeholder="UCID" required autofocus>
 					<input type="password" id="inputPW" class="form-control" placeholder="Password" required>
