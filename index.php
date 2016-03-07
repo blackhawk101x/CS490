@@ -1,6 +1,5 @@
 <?
-if(!empty($_SESSION['valid'])){
-	header('location: home.php');
+session_start();
 }
 ?>
 

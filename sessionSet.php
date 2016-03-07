@@ -1,6 +1,7 @@
 <?php
+session_start();
 
-echo json_encode(array('valid'=>true));
+$_SESSION['UCID']= $_POST['UCID'];
 
-
+echo json_encode(array('UCID'=>$_POST['UCID']));
 ?>
