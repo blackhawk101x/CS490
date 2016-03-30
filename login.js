@@ -1,15 +1,68 @@
 /*
 A simple Ajax function to prevent the form from refreshing everytime something is submitted
 */
-$("#loginForm").submit(function(e) {
-    e.preventDefault();
-});
+window.onload=function(){
+	document.getElementById("loginForm").onsubmit = function() {
+		var ajaxRequest;  // The variable that makes Ajax possible!
+		try{// Opera 8.0+, Firefox, Safari
+			ajaxRequest = new XMLHttpRequest();
+		} 
+		catch (e){ // Internet Explorer Browsers
+			try{
+				ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+			} 
+			catch (e) {
+				try{
+					ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+				} 
+				catch (e){// Something went wrong
+					alert("Your browser broke!");
+					return false;
+				}
+			}
+		}
+		
+		var usr = document.getElementById("username").value;
+		var pw = document.getElementById("password").value;
 
+		//console.log("Username "+ usr);
+		//console.log("Password "+ pw);
+		
+		
+		ajaxRequest.open("POST","sessionSet.php");
+		
+		ajaxRequest.setRequestHeader('Content-Type','application/json');
+		
+		ajaxRequest.onreadystatechange = function () {
+			if (ajaxRequest.readyState == 4 && ajaxRequest.status == 200) {
+				//console.log(ajaxRequest.responseText);
+				var data =JSON.parse(ajaxRequest.responseText);
+				//console.log(data);
+				if(data['valid']){
+					window.location.href="dashboard.php";
+				}else{
+					// make the error massage show
+					document.getElementById("LoginError").style.display="";
+				}
+			} // end of if
+		} // end of callback
+		
+		ajaxRequest.send(JSON.stringify({'username': usr ,'password': pw}));
+		
+		
+		return false;
+	}
+};
+
+
+/*
 $(document).ready(function(){
+	
 	
 	/*
 	adding an event handler to the for when the submit button is clicked
 	*/
+	/*
 	$("#submitBTN").click(function(){
 		
 		// getting the data
@@ -45,15 +98,8 @@ $(document).ready(function(){
 					$("#successSyst").css("display","");	
 				}
 				
-			} // end of callback function
-		}); // end of ajax
-		
-		
-	return false;
-	});
-	
-	/*
-	tmp["UCID"]=username;
+				if(username=="dkb9"){
+					tmp["UCID"]=username;
 					$.ajax({
 						type: "POST",
 						url: "sessionSet.php",
@@ -63,9 +109,16 @@ $(document).ready(function(){
 							window.location.href="dashboard.php";
 						}
 					});	// end of ajax call
-	*/
+				}
+				
+			} // end of callback function
+		}); // end of ajax
+	return false;
+	});
+	
 	
 	
 	//https://webauth.njit.edu/idp/Authn/UserPassword?j_username=dkb9&j_password=MeowMeow21
 	
 }); // end of doc_ready callback
+*/
