@@ -8,8 +8,8 @@
 		
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">		
 		
-		<link rel="stylesheet" type="text/css" href="login.css"></script>
-		<script type="text/javascript" src="login.js"></script>
+		<link rel="stylesheet" type="text/css" href="Login/login.css"></script>
+		<script type="text/javascript" src="Login/login.js"></script>
 		
 		<div class="container">
 			<div class="card card-container">
