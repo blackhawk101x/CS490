@@ -18,15 +18,6 @@ session_start();
 		</div>
 		<div id="navbar" class="navbar-collapse collapse pull-right">
 			<ul class="nav navbar-nav">
-				<?php
-				if($_SESSION['valid']=='teacher'){
-					?>
-					<li>
-						<a id=makeTest href="">Make A Test</a>
-					</li>
-					<?php
-				}
-				?>
 				<li>
 					<a id="Logout" href="">Logout <?php echo $_SESSION['UCID']?></a>
 				</li>

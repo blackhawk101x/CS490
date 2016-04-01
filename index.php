@@ -1,4 +1,9 @@
-
+<?php 
+// destroying any session to prevent any hacks
+session_start();
+foreach(array_keys($_SESSION) as $k) unset($_SESSION[$k]);
+session_destroy();
+?>
 <html>
 	<head>
 		<title>CS 490 Design Project</title>
