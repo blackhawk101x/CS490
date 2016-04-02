@@ -12,7 +12,6 @@ if(!($_SESSION['valid']=='teacher' || $_SESSION['valid']=='student') && !isset($
 	</head>
 	<body  style="padding-top: 50px;">
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="dashboard.css"></script>
 		<script type="text/javascript" src="callHandler.js"></script>
 		<script type="text/javascript" src="dashboard.js"></script>
 		<?php
