@@ -18,7 +18,14 @@ if(!($_SESSION['valid']=='teacher' || $_SESSION['valid']=='student') && !isset($
 		<?php
 		if($_SESSION['valid']=='teacher'){
 			?>
-				<script type="text/javascript" scr="Educator/teacherDash.js"></script>
+				<script type="text/javascript">
+				window.onload=function(){
+					document.getElementById("makeTest").addEventListener("click",function(e){
+						e.preventDefault();
+						window.location.href="Educator/testMaker.php";
+					});
+				};
+				</script>
 			<?php 
 		}
 		
@@ -32,7 +39,7 @@ if(!($_SESSION['valid']=='teacher' || $_SESSION['valid']=='student') && !isset($
         		if($_SESSION['valid']=='teacher'){
         		?>
         		<p>
-        			<a class="btn btn-primary btn-lg" href="" role="button" id="">Make A Test >></a>
+        			<a class="btn btn-primary btn-lg" href="" role="button" id="makeTest">Make A Test >></a>
         		</p>
         		<?php 
         		}
