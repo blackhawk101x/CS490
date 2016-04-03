@@ -1,9 +1,15 @@
 <?php
 session_start();
 
-if(!($_SESSION['valid']=='teacher' || $_SESSION['valid']=='student') && !isset($_SESSION['UCID'])){
+if(($_SESSION['valid']!='teacher' || $_SESSION['valid']!='student') && !isset($_SESSION['UCID'])){
 	header('location: http://afsaccess1.njit.edu/~dkb9/Software_Design_Project/');
 }
+
+if(isset($_SESSION['testId']) || isset($_SESSION['testName'])){
+	unset($_SESSION['testId']);
+	unset($_SESSION['testName']);
+}
+
 ?>
 
 
@@ -13,23 +19,13 @@ if(!($_SESSION['valid']=='teacher' || $_SESSION['valid']=='student') && !isset($
 	<body  style="padding-top: 50px;">
 		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 		<script type="text/javascript" src="callHandler.js"></script>
-		<script type="text/javascript" src="dashboard.js"></script>
-		<?php
-		if($_SESSION['valid']=='teacher'){
-			?>
-				<script type="text/javascript">
-				window.onload=function(){
-					document.getElementById("makeTest").addEventListener("click",function(e){
-						e.preventDefault();
-						window.location.href="Educator/testMaker.php";
-					});
-				};
-				</script>
-			<?php 
-		}
 		
-		require_once 'navBar.php';
-		?>
+		
+		
+		<!-- navbar -->
+		<?php require_once 'navBar.php';?> 
+		
+		<!-- Creating the Jumbotron -->
 		<div class="jumbotron">
 	   		<div class="container">
         		<h1>Hello, <?php echo $_SESSION['UCID'];?>!</h1>
@@ -38,7 +34,7 @@ if(!($_SESSION['valid']=='teacher' || $_SESSION['valid']=='student') && !isset($
         		if($_SESSION['valid']=='teacher'){
         		?>
         		<p>
-        			<a class="btn btn-primary btn-lg" href="" role="button" id="makeTest">Make A Test >></a>
+        			<a id="makeTestBtn" class="btn btn-primary btn-lg" role="button">Make A Test >></a>
         		</p>
         		<?php 
         		}
@@ -50,13 +46,20 @@ if(!($_SESSION['valid']=='teacher' || $_SESSION['valid']=='student') && !isset($
 	   
 	   
 		<div class="container">
-			
 			<hr>
 			<footer>
 				<p>© 2016, Buell Enterprises</p>
 			</footer>
 
         </div><!--/.container-->
+		
+		<?php
+		if($_SESSION['valid']=='teacher'){
+			require_once 'modal.php';
+		}
+		?>
+
+		
 	</body>
 	
 </html>

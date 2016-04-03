@@ -5,27 +5,27 @@ session_start();
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
-		<script type="text/javascript" src="../callHandler.js"></script>
-		<script type="text/javascript" src="../dashboard.js"></script>
+		<script type="text/javascript" src="callHandler.js"></script>
 		<script type="text/javascript" src="multiChoice.js"></script>
 	</head>
 	<body style="padding-top: 70px;">
-		<?php require_once '../navBar.php'; ?>
+		<?php require_once 'navBar.php'; ?>
 		<div class="container">
 		
 			<form id="multiForm">
+			
 				<div class="form-group">
 					<label for="Question">Questions</label>
-					<textarea class="form-control" rows="5" id="Question"></textarea>
+					<textarea class="form-control" rows="5" id="question" required></textarea>
 				</div>
 				
 				<div class="form-group">
 					<label for="optionA">Option A</label>
 					<div class="input-group">
 						<span class="input-group-addon">
-							<input type="radio" name="optradio">
+							<input type="radio" name="optradio" required>
 						</span>
-						<input type="text" class="form-control" placeholder="Option A">
+						<input type="text" class="form-control" placeholder="Option A" id="option1" name="textField" required>
 					</div><!-- /input-group -->
 				</div>
 				<br>
@@ -33,9 +33,9 @@ session_start();
 					<label for="optionB">Option B</label>
 					<div class="input-group">
 						<span class="input-group-addon">
-							<input type="radio" name="optradio">
+							<input type="radio" name="optradio" required>
 						</span>
-						<input type="text" class="form-control" placeholder="Option B">
+						<input type="text" class="form-control" placeholder="Option B" id="option2" name="textField" required>
 					</div><!-- /input-group -->
 				</div>				
 				<br>
@@ -43,9 +43,9 @@ session_start();
 					<label for="optionC">Option C</label>
 					<div class="input-group">
 						<span class="input-group-addon">
-							<input type="radio" name="optradio">
+							<input type="radio" name="optradio" required>
 						</span>
-						<input type="text" class="form-control" placeholder="Option C">
+						<input type="text" class="form-control" placeholder="Option C" id="option3" name="textField" required>
 					</div><!-- /input-group -->
 				</div>
 				<br>
@@ -53,9 +53,9 @@ session_start();
 					<label for="optionB">Option D</label>
 					<div class="input-group">
 						<span class="input-group-addon">
-							<input type="radio" name="optradio">
+							<input type="radio" name="optradio" required>
 						</span>
-						<input type="text" class="form-control" placeholder="Option D">
+						<input type="text" class="form-control" placeholder="Option D" id="option4" name="textField" required>
 					</div><!-- /input-group -->
 				</div>
 				<br>
@@ -64,7 +64,7 @@ session_start();
 					Save and Add
 				</button>
 				
-				<button type="button" class="btn btn-default btn-lg" aria-label="Left Align">
+				<button type="button" class="btn btn-default btn-lg" aria-label="Left Align" id="discardBtn">
 					<span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
 					Discard and Return
 				</button>

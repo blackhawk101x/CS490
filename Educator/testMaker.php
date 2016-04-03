@@ -1,16 +1,23 @@
 <?php
 session_start();
-if(!$_SESSION['valid']=='teacher' && !isset($_SESSION['UCID'])){
+if($_SESSION['valid']!='teacher' && !isset($_SESSION['UCID'])){
 	header('location: http://afsaccess1.njit.edu/~dkb9/Software_Design_Project/');
 }
+
+if(!isset($_SESSION['testName']) || !isset($_SESSION['testId'])){
+	header('location: http://afsaccess1.njit.edu/~dkb9/Software_Design_Project/dashboard.php');
+}
+//curl request
+
+
 ?>
 
 <html>
 	<head>
 		<title>Test Maker</title>
 		<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
-		<script type="text/javascript" src="../callHandler.js"></script>
-		<script type="text/javascript" src="../dashboard.js"></script>
+		<script type="text/javascript" src="callHandler.js"></script>
+		
 		<style>
 			.nav-justified {
 				background-color: #eee;
@@ -19,9 +26,14 @@ if(!$_SESSION['valid']=='teacher' && !isset($_SESSION['UCID'])){
 			}
 		</style>
 	</head>
-	<body style="padding-top: 70px;">
-		<?php require_once '../navBar.php';?>
-		
+	<body style="padding-top: 50px;">
+		<?php require_once 'navBar.php';?>
+		<div class="jumbotron">
+	   		<div class="container">
+        		<h1><?php echo $_SESSION['testName'];?></h1>	
+    		</div>
+    	</div>
+    	
 		<div class="container">
 			<nav style="padding-bottom:20px;">
 				<ul class="nav nav-justified">
@@ -29,7 +41,7 @@ if(!$_SESSION['valid']=='teacher' && !isset($_SESSION['UCID'])){
 					<li><a href="#">True or False</a></li>
 					<li><a href="#">Fill in the Blank</a></li>
 					<li><a href="#">Open Ended</a></li>
-					<li><a href="#">Home</a></li>
+					<li><a href="#">Pre-Build</a></li>
 				</ul>
 			</nav>
 			
