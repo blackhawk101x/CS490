@@ -56,6 +56,10 @@ session_start();
 			</div>
 			<div class="modal-body">
 				<input type="text" class="form-control" placeholder="Test Name" id="testName">
+				<div class="form-group">
+					<label for="description">Test Description</label>
+					<textarea class="form-control" rows="5" id="description" required name="textArea"></textarea>
+				</div>
 				<button type="button" class="btn btn-primary" id="createTest">Create Test</button>
 			</div>
 		</div>
@@ -79,12 +83,17 @@ window.onload =function(){
 	};
 	
 	document.getElementById("createTest").onclick=function(){
-		var name= document.getElementById("testName").value;
+		var data={'testName':document.getElementById("testName").value}
 		
-		ajaxCall("createTest.php",{'testName':name},function(data){
+		data['desc']=document.getElementById("description").value;
+		
+		ajaxCall("createTest.php",data,function(data){
+			console.log(data);
+			/*
 			if(data.good){
 				window.location.href="http://afsaccess1.njit.edu/~dkb9/Software_Design_Project/Educator/testMaker.php";
 			}
+			*/
 		});
 	};
 	

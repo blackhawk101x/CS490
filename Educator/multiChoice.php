@@ -15,8 +15,8 @@ session_start();
 			<form id="multiForm">
 			
 				<div class="form-group">
-					<label for="Question">Questions</label>
-					<textarea class="form-control" rows="5" id="question" required></textarea>
+					<label for="Question">Question</label>
+					<textarea class="form-control" rows="5" id="question" required name="textArea"></textarea>
 				</div>
 				
 				<div class="form-group">

@@ -24,10 +24,6 @@ window.onload=function(){
 		
 		var usr = document.getElementById("username").value;
 		var pw = document.getElementById("password").value;
-
-		//console.log("Username "+ usr);
-		//console.log("Password "+ pw);
-		
 		
 		ajaxRequest.open("POST","Login/sessionSet.php");
 		
@@ -35,15 +31,15 @@ window.onload=function(){
 		
 		ajaxRequest.onreadystatechange = function () {
 			if (ajaxRequest.readyState == 4 && ajaxRequest.status == 200) {
-				//console.log(ajaxRequest.responseText);
 				var data =JSON.parse(ajaxRequest.responseText);
-				//console.log(data);
+				
 				if(data['valid']){
-					window.location.href="dashboard.php";
+					window.location.href="http://afsaccess1.njit.edu/~dkb9/Software_Design_Project/dashboard.php";
 				}else{
 					// make the error massage show
 					document.getElementById("LoginError").style.display="";
 				}
+				
 			} // end of if
 		} // end of callback
 		

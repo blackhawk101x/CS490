@@ -5,17 +5,29 @@ window.onload=function(){
 	document.getElementById("multiForm").onsubmit = function(e) {
 		e.preventDefault();
 		
-		var quest = document.getElementById("question").value;
+		var data={'question_type':'mc'};
+		data['question']= document.getElementById("question").value;
+		
 		var txtInput = document.getElementsByName("textField");
-		var ans;
+		for(var a=0; a<txtInput.length;a++){
+			data[txtInput[a].id]=txtInput[a].value;
+		}
+			
 		var radio= document.getElementsByName("optradio");
 		for(var x=0;x<radio.length;x++){
 			if(radio[x].checked){
-				ans=txtInput[x].id;
+				data['ans']=txtInput[x].id;
 			}
 		}
-		//console.log(quest);
-		ajaxCall("");
+		console.log(data);
+		ajaxCall("addQuest.php",data,function(ret){
+			console.log(ret);
+			/*
+			if(ret.valid){
+				window.location.href="testMaker.php";
+			}
+			*/
+		});
 		
 	}
 	
