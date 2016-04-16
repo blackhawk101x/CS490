@@ -52,6 +52,21 @@ function teachDash(){
 } // end of function 'teachdash'
 //**************************************************************************************************************************************
 
+//**************************************************************************************************************************************
+/*
+populates the student dashboard
+*/
+function studDash(){
+	// obtaining the data for the front
+	$testList=get_object_vars(curlCall("https://web.njit.edu/~dkb9/Software_Design_Project/simDashStud.php",array('role'=>$_SESSION['valid'],'id'=>$_SESSION['id'])));
+	//echo var_dump($testList);
+	foreach($testList as $key => $test){
+		echo var_dump($test);
+		echo "<hr>";
+	}// end of for each loop
+	
+} // end of studDash
+//**************************************************************************************************************************************
 
 
 ?>
@@ -156,7 +171,7 @@ function teachDash(){
 				}
 				elseif($_SESSION['valid']=='student')
 					?> <div class="col-md-12"> <?php
-					//studentDash();
+					studDash();
 					?> </div><?php
 					
 				?>
