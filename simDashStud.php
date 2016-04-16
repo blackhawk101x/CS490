@@ -2,7 +2,6 @@
 //tests meta for the student
 
 //Here is what I will send you
-json_encode(array('id'=>$_USERID));
 //$_USERID will be a numeric value that was set during the login system
 
 /*
@@ -19,10 +18,10 @@ takeTest: Indicates whether the student may take test. For tests that have been 
 
 */
 
-$test1 =array('testId'=>1,'testName'=>'Exam 1','desc'=>' The first exam','questNums'=>20 'testTotal'=>100, 'testScore'=>100 takeTest=>false);
+$test1 =array('testId'=>1,'testName'=>'Exam 1','desc'=>' The first exam','questNums'=>20, 'testTotal'=>100, 'testScore'=>100, takeTest=>false);
 $test2 =array('testId'=>2,'testName'=>'Exam 2','desc'=>' The second exam','questNums'=>17,'testTotal'=>150, takeTest=>true);
 $test3 =array('testId'=>3,'testName'=>'Exam 3','desc'=>' The third exam','questNums'=>25,'testTotal'=>75,'testScore'=>70, takeTest=>false);
-$test4 =array('testId'=>4,'testName'=>'Exam 4','desc'=>' The fourth exam','questNums'=>15 'testTotal'=>100,takeTest=>false);
+$test4 =array('testId'=>4,'testName'=>'Exam 4','desc'=>' The fourth exam','questNums'=>15, 'testTotal'=>100,takeTest=>false);
 $data = array('1'=>$test1,'2'=>$test2,'3'=>$test3,'4'=>$test4);
 echo json_encode($data);
 ?>
