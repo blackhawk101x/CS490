@@ -12,22 +12,16 @@ if(isset($_SESSION['testId']) || isset($_SESSION['testName'])){
 	unset($_SESSION['testName']);
 }
 
-function btnNav(){
-	
-}
-
-
-
+//***************************************************************************************************************************************
 /*
  populates the teacher's dashboard with the tests
 */
 function teachDash(){
-	//curl request for number of tests
-	$testList=get_object_vars(curlCall("https://web.njit.edu/~dkb9/Software_Design_Project/simDashTeach.php",array('role'=>$_SESSION['valid'])));
+	//obtaining all the test meta for this teacher
+	$testList=get_object_vars(curlCall("https://web.njit.edu/~dkb9/Software_Design_Project/simDashTeach.php",array('role'=>$_SESSION['valid'],'id'=>$_SESSION['id'])));
 	//echo var_dump($testList);
 	
 	foreach($testList as $key => $test){
-		//$test = curlCall("http://afsaccess1.njit.edu/~dkb9/Software_Design_Project/simDashTeach.php",array('testId'=>$id, 'role'=>$_SESSION['valid']));
 		$test=get_object_vars($test);
 		
 		?>
@@ -57,6 +51,7 @@ function teachDash(){
 	
 } // end of function 'teachdash'
 //**************************************************************************************************************************************
+
 
 
 ?>
@@ -140,16 +135,16 @@ function teachDash(){
 					?>
 					</div>
 					<div class="col-md-2">
-						<div class="sidebar-nav-fixed pull-right affix" style="width:22%">
+						<div class="sidebar-nav-fixed affix" style="width:22%">
 							<div class="well">
 								<ul class="nav">
-									<li class="nav-header"><h3>Teacher's Tools</h3></li>
-									<li><a id="toolTestMake" class="btn btn-primary btn-lg" role="button">Make a Test</a></li>
-									<li><a role="button" class="btn btn-lg btn-success" href="https://web.njit.edu/~dkb9/Software_Design_Project/Educator/multiChoice.php">Make a Multichoice Question</a></li>
-									<li><a role="button" class="btn btn-lg btn-info" href="https://web.njit.edu/~dkb9/Software_Design_Project/Educator/trueFalse.php">Make a True and False Question</a></li>
-									<li><a role="button" class="btn btn-lg btn-warning" href="https://web.njit.edu/~dkb9/Software_Design_Project/Educator/fillBlank.php">Make a Fill in the Blank Question</a></li>
-									<li><a role="button" class="btn btn-lg btn-danger" href="https://web.njit.edu/~dkb9/Software_Design_Project/Educator/">Make a Open Ended Question</a></li>
-									<li><a role="button" class="btn btn-lg btn-default" href="https://web.njit.edu/~dkb9/Software_Design_Project/Educator/questDatabase.php">See DataBase of Questions</a></li>
+									<li class="nav-header pull-center"><h3>Teacher's Tools</h3></li>
+									<li><a id="toolTestMake" class="btn btn-lg btn-primary" role="button">Make a Test</a></li>
+									<li><a role="button" class="btn btn-lg btn-primary" href="https://web.njit.edu/~dkb9/Software_Design_Project/Educator/multiChoice.php">Make a Multichoice Question</a></li>
+									<li><a role="button" class="btn btn-lg btn-primary" href="https://web.njit.edu/~dkb9/Software_Design_Project/Educator/trueFalse.php">Make a True and False Question</a></li>
+									<li><a role="button" class="btn btn-lg btn-primary" href="https://web.njit.edu/~dkb9/Software_Design_Project/Educator/fillBlank.php">Make a Fill in the Blank Question</a></li>
+									<li><a role="button" class="btn btn-lg btn-primary" href="https://web.njit.edu/~dkb9/Software_Design_Project/Educator/">Make a Open Ended Question</a></li>
+									<li><a role="button" class="btn btn-lg btn-primary" href="https://web.njit.edu/~dkb9/Software_Design_Project/Educator/questDatabase.php">See DataBase of Questions</a></li>
 								</ul>
 							</div>
 						</div>
