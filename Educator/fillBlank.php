@@ -40,7 +40,7 @@ require_once 'curlHandle.php';
 				<div class="col-md-6">
 				<?php
 					$questList=curlCall("https://web.njit.edu/~rs334/cs490/beta/rimi/test/get_meta.php",array("user_id"=>1,"question_type"=>2, "count"=>0));
-					//echo var_dump($questList);
+					echo var_dump($questList);
 					foreach($questList as $key => $quest){
 						echo var_dump(get_object_vars($quest));
 						echo "<hr>";
