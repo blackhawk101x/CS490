@@ -3,9 +3,9 @@ A simple Ajax function to prevent the form from refreshing everytime something i
 */
 window.onload=function(){
 	document.getElementById("multiForm").onsubmit = function(e) {
-		e.preventDefault();
+		e.preventDefault(); // prevents the from from refeshing every time it is submitted
 		
-		var data={'question_type':'mc'};
+		var data={'type':'mc'};
 		data['question']= document.getElementById("question").value;
 		
 		var txtInput = document.getElementsByName("textField");
@@ -16,14 +16,35 @@ window.onload=function(){
 		var radio= document.getElementsByName("optradio");
 		for(var x=0;x<radio.length;x++){
 			if(radio[x].checked){
-				data['ans']=txtInput[x].id;
+				switch(txtInput[x].id){
+					case 'option1':
+						data['ans']='A';
+						break;
+					case 'option2':
+						data['ans']='B';
+						break;
+					case 'option3':
+						data['ans']='C';
+						break;
+					case 'option4':
+						data['ans']='D';
+						break;
+				}
+				
 			}
 		}
 		
 		data['points']=document.getElementById('points').value;
 		console.log(data);
 		
-		
+		ajaxCall("addQuest.php",data,function(ret){
+			console.log(ret);
+			/*
+			if(ret.valid){
+				window.location.href="testMaker.php";
+			}
+			*/
+		});
 		
 	}
 	
