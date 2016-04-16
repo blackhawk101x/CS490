@@ -19,15 +19,11 @@ window.onload=function(){
 				data['ans']=txtInput[x].id;
 			}
 		}
+		
+		data['points']=document.getElementById('points').value;
 		console.log(data);
-		ajaxCall("addQuest.php",data,function(ret){
-			console.log(ret);
-			/*
-			if(ret.valid){
-				window.location.href="testMaker.php";
-			}
-			*/
-		});
+		
+		
 		
 	}
 	

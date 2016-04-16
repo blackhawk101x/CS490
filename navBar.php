@@ -17,16 +17,11 @@ session_start();
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="http://afsaccess1.njit.edu/~dkb9/Software_Design_Project/dashboard.php">Dashboard</a></li>
-				<?php if($_SESSION['valid']=='teacher'){
-					?>
-						<li><a id="navTestMake">Make A Test</a></li>
-					<?php
-				}?>
+				<li class="active"><a href="https://web.njit.edu/~dkb9/Software_Design_Project/dashboard.php">Dashboard</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a id="Logout" href="http://afsaccess1.njit.edu/~dkb9/Software_Design_Project/">Logout <?php echo $_SESSION['UCID']?></a>
+					<a id="Logout" href="https://web.njit.edu/~dkb9/Software_Design_Project/">Logout <?php echo $_SESSION['UCID']?></a>
 				</li>
 			</ul>
 		</div><!--/.nav-collapse -->

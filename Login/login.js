@@ -2,7 +2,10 @@
 A simple Ajax function to prevent the form from refreshing everytime something is submitted
 */
 window.onload=function(){
-	document.getElementById("loginForm").onsubmit = function() {
+	
+	
+	document.getElementById("loginForm").onsubmit = function(e) {
+		e.preventDefault();
 		var ajaxRequest;  // The variable that makes Ajax possible!
 		try{// Opera 8.0+, Firefox, Safari
 			ajaxRequest = new XMLHttpRequest();
@@ -34,7 +37,8 @@ window.onload=function(){
 				var data =JSON.parse(ajaxRequest.responseText);
 				
 				if(data['valid']){
-					window.location.href="http://afsaccess1.njit.edu/~dkb9/Software_Design_Project/dashboard.php";
+					window.location.href="https://web.njit.edu/~dkb9/Software_Design_Project/dashboard.php";
+					//console.log(data);
 				}else{
 					// make the error massage show
 					document.getElementById("LoginError").style.display="";

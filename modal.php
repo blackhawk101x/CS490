@@ -78,22 +78,21 @@ window.onload =function(){
 		document.getElementById("testMakeModal").style.display ="none";
 	};
 	
-	document.getElementById("navTestMake").onclick=function(){
+	document.getElementById("toolTestMake").onclick=function(){
 		document.getElementById("testMakeModal").style.display ="block";
 	};
 	
 	document.getElementById("createTest").onclick=function(){
 		var data={'testName':document.getElementById("testName").value}
 		
-		data['desc']=document.getElementById("description").value;
+		data['dsc']=document.getElementById("description").value;
 		
 		ajaxCall("createTest.php",data,function(data){
 			console.log(data);
-			/*
-			if(data.good){
+			
+			if(data.valid){
 				window.location.href="http://afsaccess1.njit.edu/~dkb9/Software_Design_Project/Educator/testMaker.php";
 			}
-			*/
 		});
 	};
 	

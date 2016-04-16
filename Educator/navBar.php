@@ -17,7 +17,7 @@ session_start();
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="http://afsaccess1.njit.edu/~dkb9/Software_Design_Project/dashboard.php">Dashboard</a></li>
+				<li><a href="http://web.njit.edu/~dkb9/Software_Design_Project/dashboard.php">Dashboard</a></li>
 				<?php if($_SESSION['valid']=='teacher'){
 					?>
 						<li class="active"><a id="navTestMake">Make A Test</a></li>
@@ -26,7 +26,7 @@ session_start();
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a id="Logout" href="http://afsaccess1.njit.edu/~dkb9/Software_Design_Project/">Logout <?php echo $_SESSION['UCID']?></a>
+					<a id="Logout" href="http://web.njit.edu/~dkb9/Software_Design_Project/">Logout <?php echo $_SESSION['UCID']?></a>
 				</li>
 			</ul>
 		</div><!--/.nav-collapse -->

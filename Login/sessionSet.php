@@ -6,7 +6,7 @@ $data_Curl=array('name'=>$data['username'],'pwd'=>$data['password']);
 
 // sending the curl request
 $string = http_build_query($data_Curl);
-$ch=curl_init("https://web.njit.edu/~rs334/cs490/beta/rimi/draft11.php");
+$ch=curl_init("https://web.njit.edu/~rs334/cs490/beta/rimi/login/FinalLogin.php");
 curl_setopt($ch,CURLOPT_POST, true);
 curl_setopt($ch,CURLOPT_POSTFIELDS,$string);
 curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
@@ -28,5 +28,4 @@ if($mid['valid']){ // checking to see if it is a valid account
 
 //echo json_encode($mid);
 echo json_encode(array('valid'=>$mid['valid']));
-
 ?>
