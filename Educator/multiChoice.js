@@ -1,18 +1,21 @@
 /*
-A simple Ajax function to prevent the form from refreshing everytime something is submitted
+when the screen is loaded
 */
 window.onload=function(){
+	
+	
 	document.getElementById("multiForm").onsubmit = function(e) {
 		e.preventDefault(); // prevents the from from refeshing every time it is submitted
 		
-		var data={'type':'mc'};
+		var data={'type':'mc','question_type':0};
 		data['question']= document.getElementById("question").value;
 		
 		var txtInput = document.getElementsByName("textField");
 		for(var a=0; a<txtInput.length;a++){
 			data[txtInput[a].id]=txtInput[a].value;
 		}
-			
+		
+		// finding which radio button is checked
 		var radio= document.getElementsByName("optradio");
 		for(var x=0;x<radio.length;x++){
 			if(radio[x].checked){
@@ -35,21 +38,20 @@ window.onload=function(){
 		}
 		
 		data['points']=document.getElementById('points').value;
-		console.log(data);
 		
+		// making the ajax request 
 		ajaxCall("addQuest.php",data,function(ret){
-			console.log(ret);
-			/*
-			if(ret.valid){
-				window.location.href="testMaker.php";
+			if(ret.valid){ // on success, reload page
+				window.location.reload();
 			}
-			*/
 		});
 		
 	}
 	
+	// adding an event handler for the discard btn
 	document.getElementById("discardBtn").onclick=function(){
 		window.location.href="testMaker.php"
 	}
+	
 	
 };
