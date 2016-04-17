@@ -9,7 +9,7 @@ if($_SESSION['valid']!='teacher' || !isset($_SESSION['UCID'])){
 require_once 'curlHandle.php';
 
 /*
-translates the 
+translates the the character into a reconizable string
 */
 function optTrans($ans){
 	switch($ans){
@@ -22,13 +22,16 @@ function optTrans($ans){
 		case 'D':
 			return 'option4';
 	}
-}
+} // end of function optTrans
 
+/*
+determines if the ais the current option
+*/
 function optActive($ans,$option){
 	if(optTrans($ans)==$option)
 		return "list-group-item-success";
 	return "list-group-item-danger";
-}
+} // end of function optActive
 
 ?>
 <html>
@@ -124,12 +127,12 @@ function optActive($ans,$option){
 										<a class="list-group-item <?php echo optActive($quest['answer'],'option4'); ?>"><?php echo $quest['option4']; ?></a>
 								</div>
 								
-								<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align" id="editBtn">
+								<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align">
 									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 									Edit
 								</button>
 								
-								<button type="button" class="btn btn-default btn-lg" aria-label="Left Align" id="editBtn">
+								<button type="button" class="btn btn-default btn-lg" aria-label="Left Align">
 									<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 									Remove
 								</button>
