@@ -8,6 +8,9 @@ $data['user_id']=$_SESSION['id'];
 if($_SESSION['edit']){
 	$data['question_type']='1';
 }
+elseif($_SESSION['rm']){
+	$data['question_type']='2';
+}
 else{
 	$data['question_type']='0';
 }
@@ -15,9 +18,9 @@ else{
 
 
 if($data['type']=='mc'){
-	$data['question_type']='0';
+	//$data['question_type']='0';
 	$ret=curlCall('https://web.njit.edu/~rs334/cs490/beta/rimi/questions/mc/middle_mc.php',$data);
-	echo json_encode($data);
+	echo json_encode($ret);
 }
 else{
 	echo json_encode(array('No'=>'Work'));
