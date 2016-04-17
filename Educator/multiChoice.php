@@ -84,11 +84,18 @@ require_once 'curlHandle.php';
 				</div>
 				<div class="col-md-6">
 				<?php 
+				// getting the all the multichocie questions in the database
 				$questList=curlCall("https://web.njit.edu/~rs334/cs490/beta/rimi/test/get_meta.php",array("user_id"=>1,"question_type"=>0, "count"=>0));
-				//echo var_dump($questList);
 				foreach($questList as $key => $quest){
-					echo var_dump(get_object_vars($quest));
-					echo "<hr>";
+					?>
+					<div class="panel panel-default"> 
+						<div class="panel-body">
+						<?php
+						echo var_dump(get_object_vars($quest));
+						?>
+						</div>
+					</div>
+					<?php
 				}
 				?>
 				</div>

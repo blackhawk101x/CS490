@@ -1,31 +1,36 @@
 <?php
 session_Start();
+require_once 'curlHandle.php';
 $data = json_decode(file_get_contents('php://input'), true);
 
-$testId=$_SESSION['testId'];
+$data['user_id']=$_SESSION['id'];
 
-$data_Curl=$data;
-$data_Curl['testId']=$_SESSION['testId'];
-$data_Curl['user_id']=$_SESSION['id'];	
+if($_SESSION['edit']){
+	$data['question_type']='1';
+}
+else{
+	$data['question_type']='0';
+}
 
-//curl Request
 
-$string = http_build_query($data_Curl);
-//$ch=curl_init("https://web.njit.edu/~rs334/cs490/beta/rimi/questions/test01.php");
-//$ch=curl_init("https://web.njit.edu/~rs334/cs490/beta/rimi/questions/test02.php");
-//$ch=curl_init("https://web.njit.edu/~rs334/cs490/beta/rimi/questions/test07.php");
-$ch=curl_init("https://web.njit.edu/~rs334/cs490/beta/rimi/questions/FinalAddQues.php");
-//$ch=curl_init("https://web.njit.edu/~rs334/cs490/beta/rimi/questions/test06a.php");
-curl_setopt($ch,CURLOPT_POST, true);
-curl_setopt($ch,CURLOPT_POSTFIELDS,$string);
-curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-//echo curl_exec($ch);
-$res = curl_exec($ch);
-curl_close($ch);
 
-//echo json_encode($data_Curl);
-$mid=get_object_vars(json_decode($res));
+if($data['type']=='mc'){
+	$data['question_type']='0';
+	$ret=curlCall('https://web.njit.edu/~rs334/cs490/beta/rimi/questions/mc/middle_mc.php',$data);
+	echo json_encode($data);
+}
+else{
+	echo json_encode(array('No'=>'Work'));
+}
 
-echo json_encode($mid);
+
+
+//$testId=$_SESSION['testId'];
+
+//$data_Curl=$data;
+//$data_Curl['testId']=$_SESSION['testId'];
+//$data_Curl['user_id']=$_SESSION['id'];	
+
+
 
 ?>
