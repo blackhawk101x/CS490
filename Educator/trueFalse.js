@@ -8,7 +8,6 @@ window.onload=function(){
 		else
 			data['ans']='F';
 		data['points']=document.getElementById("points").value;
-		
 		ajaxCall("addQuest.php",data,function(ret){
 			if(ret.valid){
 				window.location.reload();
