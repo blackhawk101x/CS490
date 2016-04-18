@@ -116,7 +116,7 @@ function optActive($ans,$option){
 				
 				<div class="col-md-6">
 					<center>
-						<h3>Select an existing Test</h3>
+						<h3>Select an existing Question</h3>
 					</center>
 					<div style="max-height:80%; overflow:scroll; overflow-x:hidden;">
 					
