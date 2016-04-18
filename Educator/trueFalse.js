@@ -1,17 +1,18 @@
 window.onload=function(){
 	document.getElementById("trueFalseForm").addEventListener("submit",function(e){
 		e.preventDefault();
-		var data={'question_type':'tf'};
+		var data={'type':'tf','question_type':0};
 		data['question']=document.getElementById("question").value;
-		var tf=document.getElementsByName("tfBtn");
-		
-		
+		if(document.getElementById("true").checked)
+			data['ans']='T';
+		else
+			data['ans']='F';
+		data['points']=document.getElementById("points").value;
 		
 		ajaxCall("addQuest.php",data,function(ret){
-			//console.log(ret);
-			window.location.href="http://afsaccess1.njit.edu/~dkb9/Software_Design_Project/dashboard.php";
+			if(ret.valid){
+				window.location.reload();
+			}
 		});
-		
-		
 	});
 };
