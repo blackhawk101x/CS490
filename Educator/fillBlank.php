@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once 'navBar.php';
 
 //proper authentication
 if($_SESSION['valid']!='teacher' || !isset($_SESSION['UCID'])){
@@ -18,7 +19,7 @@ require_once 'curlHandle.php';
 		<script type="text/javascript" src="rmQuest.js"></script>
 	</head>
 	<body style="padding-top: 70px;">
-		<?php require_once 'navBar.php';?>
+		<?php navBar();?>
 		<div class="container">
 			<div class="rows">
 				<div class="col-md-6">
