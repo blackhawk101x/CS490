@@ -150,14 +150,15 @@ function studDash(){
 					<?php
 					toolBarRight();
 					
-				}
-				elseif($_SESSION['valid']=='student')
+				} // end of if
+				elseif($_SESSION['valid']=='student'){
 					?> 
 					<div class="col-md-12"> 
-					<?php studDash(); ?> 
+					<?php studDash();?> 
 					</div>
-					
-				
+				<?php
+				} // end of else if
+				?>
 				<div class="col-md-12">
 					<hr>
 					<footer>

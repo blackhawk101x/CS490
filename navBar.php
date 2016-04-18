@@ -19,7 +19,14 @@ function navBar(){
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="https://web.njit.edu/~dkb9/Software_Design_Project/dashboard.php">Dashboard</a></li>
-					<li><a role="button" id="navTestMake">Make a Test</a></li>
+					<?php 
+					if($_SESSION['valid']=='teacher'){
+						?> 
+						<li><a role="button" id="navTestMake">Make a Test</a></li>
+						<?php
+					} // end of if
+					?>
+					
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li>
