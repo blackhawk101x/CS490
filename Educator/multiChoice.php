@@ -137,6 +137,7 @@ function optActive($ans,$option){
 												<a class="list-group-item <?php echo optActive($quest['answer'],'option3'); ?>"><?php echo $quest['option3']; ?></a>
 												<a class="list-group-item <?php echo optActive($quest['answer'],'option4'); ?>"><?php echo $quest['option4']; ?></a>
 										</div>
+										<h5>Points: <?php echo $quest['points']; ?></h5>
 										
 										<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align" disabled>
 											<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
