@@ -14,6 +14,10 @@ elseif($data['type']=='tf'){
 	$ret=get_object_vars(curlCall('https://web.njit.edu/~rs334/cs490/beta/rimi/questions/tf/middle_tf.php',$data));
 	echo json_encode(array('valid'=>$ret['valid']));
 }
+elseif($data['type']=='fb'){
+	$ret=get_object_vars(curlCall('https://web.njit.edu/~rs334/cs490/beta/rimi/questions/fb/middle_fb.php',$data));
+	echo json_encode(array('valid'=>$ret['valid']));
+}
 else{
 	echo json_encode(array('No'=>'Work'));
 }
