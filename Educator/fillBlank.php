@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+//proper authentication
+if($_SESSION['valid']!='teacher' || !isset($_SESSION['UCID'])){
+	header('location: https://web.njit.edu/~dkb9/Software_Design_Project/');
+}
+
 require_once 'curlHandle.php';
 
 ?>
