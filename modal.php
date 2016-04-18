@@ -82,6 +82,10 @@ window.onload =function(){
 		document.getElementById("testMakeModal").style.display ="block";
 	};
 	
+	document.getElementById("navTestMake").onclick=function(){
+		document.getElementById("testMakeModal").style.display ="block";
+	};
+	
 	document.getElementById("createTest").onclick=function(){
 		var data={'testName':document.getElementById("testName").value}
 		

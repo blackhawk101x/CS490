@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once 'curlHandle.php';
-
+require_once 'navBar.php';
 
 if(($_SESSION['valid']!='teacher' || $_SESSION['valid']!='student') && !isset($_SESSION['UCID'])){
 	header('location: https://web.njit.edu/~dkb9/Software_Design_Project/');
@@ -110,9 +110,7 @@ function studDash(){
 			}
 		?>
 		
-		
-		<!-- navbar -->
-		<?php require_once 'navBar.php';?> 
+		<?php navBar(); // creating the navbar on top ?> 
 		
 		<!-- Creating the Jumbotron -->
 		<div class="jumbotron">
@@ -149,32 +147,16 @@ function studDash(){
 					teachDash();
 					?>
 					</div>
-					<div class="col-md-2">
-						<div class="sidebar-nav-fixed affix" style="width:22%">
-							<div class="well">
-								<ul class="nav">
-									<li class="nav-header pull-center"><h3>Teacher's Tools</h3></li>
-									<li><a id="toolTestMake" class="btn btn-lg btn-primary" role="button">Make a Test</a></li>
-									<li><a role="button" class="btn btn-lg btn-primary" href="https://web.njit.edu/~dkb9/Software_Design_Project/Educator/multiChoice.php">Make a Multichoice Question</a></li>
-									<li><a role="button" class="btn btn-lg btn-primary" href="https://web.njit.edu/~dkb9/Software_Design_Project/Educator/trueFalse.php">Make a True and False Question</a></li>
-									<li><a role="button" class="btn btn-lg btn-primary" href="https://web.njit.edu/~dkb9/Software_Design_Project/Educator/fillBlank.php">Make a Fill in the Blank Question</a></li>
-									<li><a role="button" class="btn btn-lg btn-primary" href="https://web.njit.edu/~dkb9/Software_Design_Project/Educator/">Make a Open Ended Question</a></li>
-									<li><a role="button" class="btn btn-lg btn-primary" href="https://web.njit.edu/~dkb9/Software_Design_Project/Educator/questDatabase.php">See DataBase of Questions</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					
-					
-					
 					<?php
+					toolBarRight();
+					
 				}
 				elseif($_SESSION['valid']=='student')
-					?> <div class="col-md-12"> <?php
-					studDash();
-					?> </div><?php
+					?> 
+					<div class="col-md-12"> 
+					<?php studDash(); ?> 
+					</div>
 					
-				?>
 				
 				<div class="col-md-12">
 					<hr>
