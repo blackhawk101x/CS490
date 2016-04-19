@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'navBar.php';
+
 
 //proper authentication
 if($_SESSION['valid']!='teacher' || !isset($_SESSION['UCID'])){
@@ -8,7 +8,7 @@ if($_SESSION['valid']!='teacher' || !isset($_SESSION['UCID'])){
 }
 
 require_once 'curlHandle.php';
-
+require_once 'navBar.php';
 ?>
 <html>
 	<head>
@@ -17,6 +17,13 @@ require_once 'curlHandle.php';
 		<script type="text/javascript" src="callHandler.js"></script>
 		<script type="text/javascript" src="fillBlank.js"></script>
 		<script type="text/javascript" src="rmQuest.js"></script>
+		<?php 
+		if(isset($_SESSION['testId'])){
+			?>
+			<script type="text/javascript" src="addQuestTest.js"></script>
+			<?php
+		}
+		?>
 	</head>
 	<body style="padding-top: 70px;">
 		<?php navBar();?>
@@ -57,14 +64,45 @@ require_once 'curlHandle.php';
 					</form>
 				</div>
 				<div class="col-md-6">
-				<?php
-					$questList=curlCall("https://web.njit.edu/~rs334/cs490/beta/rimi/test/get_meta.php",array("user_id"=>1,"question_type"=>2, "count"=>0));
-					echo var_dump($questList);
-					foreach($questList as $key => $quest){
-						echo var_dump(get_object_vars($quest));
-						echo "<hr>";
-					}
-				?>
+					<center>
+						<h3>Select an existing Question</h3>
+					</center>
+					<div  style="max-height:80%; overflow:scroll; overflow-x:hidden;">
+						<?php
+							$questList=curlCall("https://web.njit.edu/~rs334/cs490/beta/rimi/test/get_meta.php",array("user_id"=>1,"question_type"=>2, "count"=>0));
+							//echo var_dump($questList);
+							foreach($questList as $key => $quest){
+								$quest=get_object_vars($quest);
+								?>
+								<div class="panel panel-default">
+									<div class="panel-body">
+										<center>
+											<h3>Question: <?php echo $quest['question']; ?></h3>
+											<h4>Answer: <?php echo $quest['ans'];?></h4>
+											
+											<?php 
+											if(isset($_SESSION['testId'])){
+												?>
+												<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align" onclick="addQuestTest(<?php echo $quest['question_id']; ?>)">
+													<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+													Add to Test
+												</button>
+												<?php
+											}
+											?>
+											
+											<button type="button" class="btn btn-default btn-lg" aria-label="Left Align" onclick="rmQuest(<?php echo $quest['question_id']?>)">
+												<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+												Remove
+											</button>
+										</center>
+									</div>
+								</div>
+								<?php
+								
+							}
+						?>
+					</div>
 				</div>
 				<div class="col-md-12">
 					<hr>

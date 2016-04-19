@@ -40,6 +40,13 @@ function optActive($ans,$option){
 		<script type="text/javascript" src="callHandler.js"></script>
 		<script type="text/javascript" src="multiChoice.js"></script>
 		<script type="text/javascript" src="rmQuest.js"></script>
+		<?php 
+		if(isset($_SESSION['testId'])){
+			?>
+			<script type="text/javascript" src="addQuestTest.js"></script>
+			<?php
+		}
+		?>
 	</head>
 	<body style="padding-top: 70px;">
 		<?php navBar(); ?>
@@ -124,6 +131,7 @@ function optActive($ans,$option){
 						// getting the all the multichocie questions in the database
 						$questList=curlCall("https://web.njit.edu/~rs334/cs490/beta/rimi/test/get_meta.php",array("user_id"=>1,"question_type"=>0, "count"=>0));
 						foreach($questList as $key => $quest){
+							echo var_dump($quest);
 							$quest=get_object_vars($quest);
 							?>
 							<div class="panel panel-default">
@@ -138,11 +146,17 @@ function optActive($ans,$option){
 												<a class="list-group-item <?php echo optActive($quest['answer'],'option4'); ?>"><?php echo $quest['option4']; ?></a>
 										</div>
 										<h5>Points: <?php echo $quest['points']; ?></h5>
+										<?php 
+										if(isset($_SESSION['testId'])){
+											?>
+											<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align" onclick="addQuestTest(<?php echo $quest['question_id']; ?>)">
+												<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+												Add to Test
+											</button>
+											<?php
+										}
+										?>
 										
-										<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align" disabled>
-											<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-											Edit
-										</button>
 										
 										<button type="button" class="btn btn-default btn-lg" aria-label="Left Align" onclick="rmQuest(<?php echo $quest['question_id']?>)">
 											<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>

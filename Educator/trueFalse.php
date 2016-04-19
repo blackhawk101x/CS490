@@ -27,6 +27,13 @@ function optActive($ans,$opt){
 		<script type="text/javascript" src="callHandler.js"></script>
 		<script type="text/javascript" src="rmQuest.js"></script>
 		<script type="text/javascript" src="trueFalse.js"></script>
+		<?php 
+		if(isset($_SESSION['testId'])){
+			?>
+			<script type="text/javascript" src="addQuestTest.js"></script>
+			<?php
+		}
+		?>
 	</head>
 	<body style="padding-top: 70px;">
 		<?php navBar(); ?>
@@ -101,10 +108,16 @@ function optActive($ans,$opt){
 										</div>
 										<h5>Points: <?php echo $quest['points']; ?></h5>
 										
-										<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align" disabled>
-											<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-											Edit
-										</button>
+										<?php 
+										if(isset($_SESSION['testId'])){
+											?>
+											<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align" onclick="addQuestTest(<?php echo $quest['question_id']; ?>)">
+												<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+												Add to Test
+											</button>
+											<?php
+										}
+										?>
 										
 										<button type="button" class="btn btn-default btn-lg" aria-label="Left Align" onclick="rmQuest(<?php echo $quest['question_id']?>)">
 											<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
