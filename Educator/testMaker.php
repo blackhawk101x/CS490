@@ -16,7 +16,71 @@ require_once 'navBar.php';
 
 $questList=curlCall("https://web.njit.edu/~rs334/cs490/beta/rimi/meta/exam/exam_info.php",array("user_id"=>$_SESSION['id'],"exam_id"=>"1"));
 
+
+/*
+translates the the character into a reconizable string
+*/
+function optTrans($ans){
+	switch($ans){
+		case 'A':
+			return 'option1';
+		case 'B':
+			return 'option2';
+		case 'C':
+			return 'option3';
+		case 'D':
+			return 'option4';
+	}
+} // end of function optTrans
+
+/*
+determines if the ais the current option
+*/
+function optActive($ans,$option){
+	if(optTrans($ans)==$option)
+		return "list-group-item-success";
+	return "list-group-item-danger";
+} // end of function optActive
+
+/*
+
+*/
 function mcPanel($quest){
+	
+	?>
+	<center>
+		<h3>Question: <?php echo $quest['question']; ?></h3>
+		<div class="rows">
+			<div class="col-md-6">
+				<a class="list-group-item <?php echo optActive($quest['ans'],'option1'); ?>"><?php echo $quest['option1']; ?></a>
+			</div>
+			<div class="col-md-6">
+				<a class="list-group-item <?php echo optActive($quest['ans'],'option2'); ?>"><?php echo $quest['option2']; ?></a>
+			</div>
+			<div class="col-md-6">
+				<a class="list-group-item <?php echo optActive($quest['ans'],'option3'); ?>"><?php echo $quest['option3']; ?></a>
+			</div>
+			<div class="col-md-6">
+				<a class="list-group-item <?php echo optActive($quest['ans'],'option4'); ?>"><?php echo $quest['option4']; ?></a>
+			</div>
+			<hr>
+			<br>
+			<hr>
+			<br>
+			
+			
+				<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align" disabled>
+					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+					Edit Question
+				</button>
+				<button type="button" class="btn btn-default btn-lg" aria-label="Left Align" onclick="rmQuestTest(<?php echo $quest['quest_id']; ?>)">
+					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+					Remove from Test
+				</button>
+			
+		</div>
+	</center>
+	<?php
 	
 }
 
@@ -49,23 +113,12 @@ function mcPanel($quest){
 					?>
 					<div class="panel panel-default">
 						<div class="panel-body">
-							<center>
-								<h3>Question: <?php echo $quest['question']; ?></h3>
-							</center>
-								
 							<?php
 							echo var_dump($quest);
+							if($quest['type_key']=='1'){
+								mcPanel($quest);
+							}
 							?>
-							<center>
-								<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align" disabled>
-									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-									Edit Question
-								</button>
-								
-								<button type="button" class="btn btn-default btn-lg" aria-label="Left Align" onclick="rmQuestTest(<?php echo $quest['quest_id']; ?>)">
-									Remove from Test
-								</button
-							</center>
 						</div>
 					</div>
 					<?php
