@@ -46,8 +46,8 @@ function toolBar(){
 	<nav style="padding-bottom:20px;">
 		<ul class="nav nav-justified">
 			<li><a href="multiChoice.php">Multiple Choice</a></li>
-			<li><a href="#">True or False</a></li>
-			<li><a href="#">Fill in the Blank</a></li>
+			<li><a href="trueFalse.php">True or False</a></li>
+			<li><a href="fillBlank.php">Fill in the Blank</a></li>
 			<li><a href="#">Open Ended</a></li>
 			<li><a href="#">Home</a></li>
 		</ul>
