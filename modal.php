@@ -91,9 +91,7 @@ window.onload =function(){
 		
 		data['dsc']=document.getElementById("description").value;
 		
-		ajaxCall("createTest.php",data,function(data){
-			console.log(data);
-			
+		ajaxCall("createTest.php",data,function(data){		
 			if(data.valid){
 				window.location.href="http://afsaccess1.njit.edu/~dkb9/Software_Design_Project/Educator/testMaker.php";
 			}
