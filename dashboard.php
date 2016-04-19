@@ -18,11 +18,12 @@ if(isset($_SESSION['testId']) || isset($_SESSION['testName'])){
 */
 function teachDash(){
 	//obtaining all the test meta for this teacher
-	$testList=get_object_vars(curlCall("https://web.njit.edu/~dkb9/Software_Design_Project/simDashTeach.php",array('role'=>$_SESSION['valid'],'id'=>$_SESSION['id'])));
+	$testList=curlCall("https://web.njit.edu/~rs334/cs490/beta/rimi/meta/exam/exam_meta_info.php",array("user_id"=>$_SESSION['id']));
+	//"user_id"=>$_SESSION['id']
 	//echo var_dump($testList);
-	
 	foreach($testList as $key => $test){
 		$test=get_object_vars($test);
+		echo var_dump($test);
 		
 		?>
 		
@@ -34,15 +35,17 @@ function teachDash(){
 				<h4>Test Description: <?php echo $test['dsc']; ?></h4>
 				<h4>Number of Questions: <?php echo $test['questNums'];?></h4>
 				<hr>
-				<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align"  onclick="editTest('<?php echo $key; ?>','<?php echo $test['testName'];?>')">
-					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-					Edit
-				</button>
-				
-				<button type="button" class="btn btn-default btn-lg" aria-label="Left Align"  >
-					<span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-					Release/Hide Grades
-				</button>
+				<center>
+					<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align"  onclick="editTest('<?php echo $test['testId']; ?>','<?php echo $test['testName'];?>')">
+						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+						Edit
+					</button>
+					
+					<button type="button" class="btn btn-default btn-lg" aria-label="Left Align"  >
+						<span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+						Release/Hide Grades
+					</button>
+				</center>
 			</div>
 		</div>
 		
