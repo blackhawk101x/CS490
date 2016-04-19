@@ -66,17 +66,16 @@ function mcPanel($quest){
 			<hr>
 			<br>
 			<hr>
-			<br>
+			<br>			
 			
-			
-				<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align" disabled>
-					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-					Edit Question
-				</button>
-				<button type="button" class="btn btn-default btn-lg" aria-label="Left Align" onclick="rmQuestTest(<?php echo $quest['quest_id']; ?>)">
-					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-					Remove from Test
-				</button>
+			<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align" disabled>
+				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+				Edit Question
+			</button>
+			<button type="button" class="btn btn-default btn-lg" aria-label="Left Align" onclick="rmQuestTest(<?php echo $quest['test_q_id']; ?>)">
+				<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+				Remove from Test
+			</button>
 			
 		</div>
 	</center>
