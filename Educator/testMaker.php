@@ -29,6 +29,7 @@ function mcPanel($quest){
 		<title>Test Maker</title>
 		<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
 		<script type="text/javascript" src="callHandler.js"></script>
+		<script type="text/javascript" src="rmQuest.js"></script>
 	</head>
 	<body style="padding-top: 25px;">
 		<?php navBar(); ?>
@@ -61,7 +62,7 @@ function mcPanel($quest){
 									Edit Question
 								</button>
 								
-								<button type="button" class="btn btn-default btn-lg" aria-label="Left Align" >
+								<button type="button" class="btn btn-default btn-lg" aria-label="Left Align" onclick="rmQuestTest(<?php echo $quest['quest_id']; ?>)">
 									Remove from Test
 								</button
 							</center>
