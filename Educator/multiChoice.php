@@ -22,7 +22,9 @@ if(isset($_SESSION['testId'])){
 	}
 }
 
-
+/* 
+Creates the add to test button according to whether it is already in the exam or the user is even edditing the exam
+*/
 function addToExamBtn($questId,$questDB){
 	if(isset($_SESSION['testId'])){
 		?> <button type="button" class="btn btn-primary btn-lg" aria-label="Left Align" <?php 
@@ -41,7 +43,7 @@ function addToExamBtn($questId,$questDB){
 		?> </button><?php
 	}
 	// do nothing for now
-}
+} // end of function addtoExamBtn
 
 /*
 translates the the character into a reconizable string
