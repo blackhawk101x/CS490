@@ -41,6 +41,11 @@ function teachDash(){
 						Edit
 					</button>
 					
+					<button type="button" class="btn btn-default btn-lg" aria-label="Left Align" onclick="rmExam(<?php echo $test['testId']; ?>)">
+						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+						Delete Exam
+					</button>
+					
 					<button type="button" class="btn btn-default btn-lg" aria-label="Left Align"  >
 						<span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
 						Release/Hide Grades
@@ -92,6 +97,14 @@ function studDash(){
 					});
 					
 				};
+				
+				
+				function rmExam(testId){
+					ajaxCall("rmTest.php",{'test_id':testId},function(ret){
+						if(ret.valid)
+							window.location.reload();
+					});
+				}
 				</script>
 				<?php
 			}
