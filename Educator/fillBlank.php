@@ -9,6 +9,13 @@ if($_SESSION['valid']!='teacher' || !isset($_SESSION['UCID'])){
 
 require_once 'curlHandle.php';
 require_once 'navBar.php';
+
+
+
+
+
+
+
 ?>
 <html>
 	<head>

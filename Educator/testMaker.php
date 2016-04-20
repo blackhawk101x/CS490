@@ -183,8 +183,9 @@ function fbpanel($quest){
 					?>
 					<div class="panel panel-default">
 						<div class="panel-body">
+							<h4>Question Number: <?php echo $key;?></h4>
 							<?php
-							echo var_dump($quest);
+							//echo var_dump($quest);
 							if($quest['type_key']=='1'){
 								mcPanel($quest);
 							}

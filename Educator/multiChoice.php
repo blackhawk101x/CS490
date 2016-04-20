@@ -1,12 +1,47 @@
 <?php
 session_start();
-require_once 'navBar.php';
+
 //proper authentication
 if($_SESSION['valid']!='teacher' || !isset($_SESSION['UCID'])){
 	header('location: https://web.njit.edu/~dkb9/Software_Design_Project/');
 }
 
+require_once 'navBar.php';
 require_once 'curlHandle.php';
+
+/*
+If the user is editing a test, this will get all the multichoice question from the db that are already part of this test
+*/
+$questDB=array();
+if(isset($_SESSION['testId'])){
+	$currExam=curlCall("https://web.njit.edu/~rs334/cs490/beta/rimi/meta/exam/exam_info.php",array("user_id"=>$_SESSION['id'],"exam_id"=>$_SESSION['testId']));
+	foreach($currExam as $key=>$quest){
+		$quest=get_object_vars($quest);
+		if($quest['type_key']=='1')
+			$questDB[$key]=$quest['quest_id'];
+	}
+}
+
+
+function addToExamBtn($questId,$questDB){
+	if(isset($_SESSION['testId'])){
+		?> <button type="button" class="btn btn-primary btn-lg" aria-label="Left Align" <?php 
+		if(in_array($questId,$questDB)){
+			?> disabled>
+			Already in Test
+			<?php
+		}
+		else{
+			?> onclick="addQuestTest(<?php echo $questId; ?>)"> 
+			<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+				Add to Test
+			
+			<?php
+		}
+		?> </button><?php
+	}
+	// do nothing for now
+}
 
 /*
 translates the the character into a reconizable string
@@ -51,6 +86,7 @@ function optActive($ans,$option){
 	<body style="padding-top: 70px;">
 		<?php navBar(); ?>
 		<div class="container">
+			<?php toolBar(); ?>
 			<div class="rows">
 				<div class="col-md-6">
 					<form id="multiForm">
@@ -131,7 +167,7 @@ function optActive($ans,$option){
 						// getting the all the multichocie questions in the database
 						$questList=curlCall("https://web.njit.edu/~rs334/cs490/beta/rimi/test/get_meta.php",array("user_id"=>1,"question_type"=>0, "count"=>0));
 						foreach($questList as $key => $quest){
-							echo var_dump($quest);
+							//echo var_dump($quest);
 							$quest=get_object_vars($quest);
 							?>
 							<div class="panel panel-default">
@@ -146,21 +182,15 @@ function optActive($ans,$option){
 												<a class="list-group-item <?php echo optActive($quest['answer'],'option4'); ?>"><?php echo $quest['option4']; ?></a>
 										</div>
 										<h5>Points: <?php echo $quest['points']; ?></h5>
-										<?php 
-										if(isset($_SESSION['testId'])){
-											?>
-											<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align" onclick="addQuestTest(<?php echo $quest['question_id']; ?>)">
-												<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-												Add to Test
-											</button>
-											<?php
-										}
+										<?php
+											addToExamBtn($quest['question_id'],$questDB);										
+										
 										?>
 										
 										
 										<button type="button" class="btn btn-default btn-lg" aria-label="Left Align" onclick="rmQuest(<?php echo $quest['question_id']?>)">
 											<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-											Remove
+											Remove from Database
 										</button>
 										
 									</center>

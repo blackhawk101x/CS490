@@ -19,7 +19,7 @@ elseif($data['type']=='fb'){
 	echo json_encode(array('valid'=>$ret['valid']));
 }
 else{
-	echo json_encode(array('No'=>'Work'));
+	echo json_encode(array('valid'=>false));
 }
 	
 ?>

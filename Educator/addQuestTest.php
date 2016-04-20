@@ -6,7 +6,7 @@ $data['user_id']=$_SESSION['id'];
 $data['exam_id']=$_SESSION['testId'];
 $ret= get_object_vars(curlCall("https://web.njit.edu/~rs334/cs490/beta/rimi/exam/add_exam_ques.php",$data));
 
-echo json_encode($ret);
+echo json_encode(array('valid'=>$ret['valid']));
 //echo json_encode($data);
 
 
