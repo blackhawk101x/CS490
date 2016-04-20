@@ -142,7 +142,7 @@ function fbpanel($quest){
 	?>
 	<center>
 		<h3>Question: <?php echo $quest['question'];?><h3>
-		<h3>Answer: <?php echo $quest['ans'];?></h3>
+		<h3>Answer: <?php echo $quest['option1'];?></h3>
 		<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align" disabled>
 			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 			Edit Question
@@ -176,7 +176,7 @@ function fbpanel($quest){
 		<div class="container">
 			<div class="rows">
 			<?php
-				toolBar();
+				toolBarTestMaker();
 				//echo var_dump($questList);
 				foreach($questList as $key=>$quest){
 					$quest=get_object_vars($quest);

@@ -45,14 +45,41 @@ function toolBar(){
 	</style>
 	<nav style="padding-bottom:20px;">
 		<ul class="nav nav-justified">
+			<?php
+			if(isset($_SESSION['testId'])){
+				?> <li><a href="testMaker.php"><?php echo $_SESSION['testName']; ?></a></li><?php
+			}
+			?>
 			<li><a href="multiChoice.php">Multiple Choice</a></li>
 			<li><a href="trueFalse.php">True or False</a></li>
 			<li><a href="fillBlank.php">Fill in the Blank</a></li>
 			<li><a href="#">Open Ended</a></li>
-			<li><a href="#">Home</a></li>
+			<li><a href="#">Pre-Made Questions</a></li>
 		</ul>
 	</nav>
 	<?php
 }
+
+function toolBarTestMaker(){
+	?>
+	<style>
+			.nav-justified {
+				background-color: #eee;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+			}
+	</style>
+	<nav style="padding-bottom:20px;">
+		<ul class="nav nav-justified">
+			<li><a href="multiChoice.php">Multiple Choice Question</a></li>
+			<li><a href="trueFalse.php">True or False Question</a></li>
+			<li><a href="fillBlank.php">Fill-in-the-Blank</a></li>
+			<li><a href="">Open Ended Question</a></li>
+			<li><a href="">Pre-Made Questions</a></li>
+		</ul>
+	</nav>
+	<?php
+}
+
 
 ?>
