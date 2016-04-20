@@ -163,8 +163,6 @@ function studDash(){
 				</h1>
         		<p>CS 490 Project. A simple test taking programs</p>
 				
-				<?php echo var_dump($_SESSION);?>
-				
         		<?php
         		if($_SESSION['valid']=='teacher'){
         		?>
