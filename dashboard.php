@@ -23,7 +23,7 @@ function teachDash(){
 	//echo var_dump($testList);
 	foreach($testList as $key => $test){
 		$test=get_object_vars($test);
-		echo var_dump($test);
+		//echo var_dump($test);
 		
 		?>
 		
@@ -38,7 +38,7 @@ function teachDash(){
 				<center>
 					<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align"  onclick="editTest('<?php echo $test['testId']; ?>','<?php echo $test['testName'];?>')">
 						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-						Edit
+						Edit Exam
 					</button>
 					
 					<button type="button" class="btn btn-default btn-lg" aria-label="Left Align" onclick="rmExam(<?php echo $test['testId']; ?>)">
@@ -140,6 +140,9 @@ function studDash(){
 				echo $_SESSION['UCID']; ?>!
 				</h1>
         		<p>CS 490 Project. A simple test taking programs</p>
+				
+				<?php echo var_dump($_SESSION);?>
+				
         		<?php
         		if($_SESSION['valid']=='teacher'){
         		?>

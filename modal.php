@@ -93,7 +93,7 @@ window.onload =function(){
 		
 		ajaxCall("createTest.php",data,function(data){		
 			if(data.valid){
-				window.location.href="http://afsaccess1.njit.edu/~dkb9/Software_Design_Project/Educator/testMaker.php";
+				window.location.href="https://web.njit.edu/~dkb9/Software_Design_Project/Educator/testMaker.php";
 			}
 		});
 	};
