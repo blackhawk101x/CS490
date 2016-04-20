@@ -135,6 +135,26 @@ function tfPanel($quest){
 } // end of function 'tfPanel'
 
 
+/*
+Builds the fill-in-the-blank panel
+*/
+function fbpanel($quest){
+	?>
+	<center>
+		<h3>Question: <?php echo $quest['question'];?><h3>
+		<h3>Answer: <?php echo $quest['ans'];?></h3>
+		<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align" disabled>
+			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+			Edit Question
+		</button>
+		<button type="button" class="btn btn-default btn-lg" aria-label="Left Align" onclick="rmQuestTest(<?php echo $quest['test_q_id']; ?>)">
+			<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+			Remove from Test
+		</button>
+	</center>
+	<?php
+}
+
 ?>
 
 <html>
@@ -170,6 +190,9 @@ function tfPanel($quest){
 							}
 							elseif($quest['type_key']=='2'){
 								tfPanel($quest);
+							}
+							elseif($quest['type_key']=='3'){
+								fbpanel($quest);
 							}
 							?>
 						</div>
