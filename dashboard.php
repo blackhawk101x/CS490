@@ -46,10 +46,25 @@ function teachDash(){
 						Delete Exam
 					</button>
 					
-					<button type="button" class="btn btn-default btn-lg" aria-label="Left Align"  >
-						<span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-						Release/Hide Grades
-					</button>
+					<?php
+						//echo var_dump($test);
+						if($test['score_status']=='0'){
+							?> 
+								<button type="button" class="btn btn-default btn-lg" aria-label="Left Align" onclick="toggleRelease('<?php echo $test['testId'];?>',<?php echo '1'; ?>);">
+									<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+									Release Grades
+								</button>
+							<?php
+						}
+						else{
+							?>
+								<button type="button" class="btn btn-default btn-lg" aria-label="Left Align" onclick="toggleRelease('<?php echo $test['testId'];?>',<?php echo '0'; ?>);">
+									<span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+									Hide Grades
+								</button>
+							<?php
+						}
+					?>
 				</center>
 			</div>
 		</div>
@@ -101,6 +116,13 @@ function studDash(){
 				
 				function rmExam(testId){
 					ajaxCall("rmTest.php",{'test_id':testId},function(ret){
+						if(ret.valid)
+							window.location.reload();
+					});
+				}
+				
+				function toggleRelease(examId,state){
+					ajaxCall("toggleTest.php",{'exam_id':examId.toString(),'release_status':state.toString()},function(ret){
 						if(ret.valid)
 							window.location.reload();
 					});
