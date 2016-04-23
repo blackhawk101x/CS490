@@ -60,26 +60,4 @@ function toolBar(){
 	<?php
 }
 
-function toolBarTestMaker(){
-	?>
-	<style>
-			.nav-justified {
-				background-color: #eee;
-				border: 1px solid #ccc;
-				border-radius: 5px;
-			}
-	</style>
-	<nav style="padding-bottom:20px;">
-		<ul class="nav nav-justified">
-			<li><a href="multiChoice.php">Multiple Choice Question</a></li>
-			<li><a href="trueFalse.php">True or False Question</a></li>
-			<li><a href="fillBlank.php">Fill-in-the-Blank</a></li>
-			<li><a href="openEnd.php">Open Ended Question</a></li>
-			<li><a href="">Pre-Made Questions</a></li>
-		</ul>
-	</nav>
-	<?php
-}
-
-
 ?>
