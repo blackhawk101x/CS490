@@ -69,6 +69,7 @@ function addToExamBtn($questId,$questDB){
 	<body style="padding-top: 70px;">
 		<?php navBar();?>
 		<div class="container">
+			<?php toolBar(); ?>
 			<div class="rows">
 				<div class="col-md-6">
 					<form id="fillForm">
