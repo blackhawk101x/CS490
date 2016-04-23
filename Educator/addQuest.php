@@ -28,5 +28,5 @@ if(isset($_SESSION['testId']) && $ret['valid'] ){
 	
 }
 
-echo json_encode($ret);
+echo json_encode(array('valid'=>$ret['valid']));
 ?>
