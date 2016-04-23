@@ -1,11 +1,13 @@
 <?php
 session_start();
-//require_once 'curHandle.php';
 $data = json_decode(file_get_contents('php://input'), true);
+require_once 'curlHandle.php';
 
-//$ret=curlCall('taketest.php',array('testId'=>$data['testId']));
-$_SESSION['testId']=$data['testId'];
-$_SESSION['testName']=$data['testName'];
-echo json_encode(array('valid'=>true));
+$data['user_id']=$_SESSION['id'];
+$ret=curlCall("https://web.njit.edu/~rs334/cs490/beta/rimi/student/exam/view_exam.php",$data);
+
+
+
+echo json_encode($ret);
 
 ?>

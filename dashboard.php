@@ -80,13 +80,32 @@ function teachDash(){
 populates the student dashboard
 */
 function studDash(){
-	// obtaining the data for the front
-	$testList=get_object_vars(curlCall("https://web.njit.edu/~dkb9/Software_Design_Project/simDashStud.php",array('role'=>$_SESSION['valid'],'id'=>$_SESSION['id'])));
-	//echo var_dump($testList);
-	foreach($testList as $key => $test){
-		echo var_dump($test);
-		echo "<hr>";
-	}// end of for each loop
+	$examList=curlCall("https://web.njit.edu/~rs334/cs490/beta/rimi/student/exam/list_exam.php",array("user_id"=>"1"));
+	foreach($examList as $key=>$exam){
+		$exam=get_object_vars($exam);
+		echo var_dump($exam);
+		?>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h1 class="panel-title"><?php echo $exam['test_name']; ?></h1>
+			</div>
+			<div class="panel-body">
+				<h4>Test Description: <?php echo $exam['test_description']; ?></h4>
+				<h4>Number of Questions: <?php echo $exam['questNums'];?></h4>
+				<hr>
+				<center>
+					<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align"  onclick="takeTest('<?php echo $exam['test_id']; ?>')">
+						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+						Take <?php echo $exam['test_name']; ?>
+					</button>
+				</center>
+			</div>
+		</div>
+		
+		<?php
+		
+		//echo "<hr>";
+	}
 	
 } // end of studDash
 //**************************************************************************************************************************************
@@ -133,15 +152,11 @@ function studDash(){
 			elseif($_SESSION['valid']=='student'){
 				?>
 				<script>
-				function takeTest(testId,testName){
-					//console.log(testId);
-					//console.log(testName);
-					ajaxCall('takeTest.php',{'testId':testId,'testName':testName},function(data){
-						//console.log(data);
-						if(data.valid){
-							window.location.href="Student/testTaker.php";
-						}
-					});
+				function takeTest(testId){
+					console.log(testId);
+					ajaxCall("takeTest.php",{'exam_id':testId.toString()},function(ret){
+						console.log(ret);
+					}); // end of ajax call
 				}
 				</script>
 				<?php
