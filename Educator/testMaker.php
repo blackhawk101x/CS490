@@ -176,7 +176,7 @@ function fbpanel($quest){
 		<div class="container">
 			<div class="rows">
 			<?php
-				toolBarTestMaker();
+				toolBar();
 				//echo var_dump($questList);
 				foreach($questList as $key=>$quest){
 					$quest=get_object_vars($quest);
