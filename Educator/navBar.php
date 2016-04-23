@@ -49,6 +49,9 @@ function toolBar(){
 			if(isset($_SESSION['testId'])){
 				?> <li><a href="testMaker.php"><?php echo $_SESSION['testName']; ?></a></li><?php
 			}
+			else{
+				?> <li><a href="../dashboard.php">Dashboard</a></li><?php
+			}
 			?>
 			<li><a href="multiChoice.php">Multiple Choice</a></li>
 			<li><a href="trueFalse.php">True or False</a></li>
