@@ -188,9 +188,8 @@ function fbpanel($quest){
 					?>
 					<div class="panel panel-default">
 						<div class="panel-body">
-							<h4>Question Number <?php echo $key+1;?></h4>
 							<?php
-							echo var_dump($quest);
+							//echo var_dump($quest);
 							if($quest['type_key']=='1'){
 								mcPanel($quest);
 							}
@@ -208,7 +207,7 @@ function fbpanel($quest){
 								</button>
 								<?php addtoExamBtn($quest['question_id'],$questDB); ?>
 								
-								<button type="button" class="btn btn-default btn-lg" aria-label="Left Align" onclick="rmQuest(<?php echo $quest['question_id']; ?>)">
+								<button type="button" class="btn btn-default btn-lg" aria-label="Left Align" onclick="rmQuest(<?php echo $quest['question_id']?>)">
 									<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 									Remove from Database
 								</button>
