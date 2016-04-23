@@ -57,7 +57,7 @@ function toolBar(){
 			<li><a href="trueFalse.php">True or False</a></li>
 			<li><a href="fillBlank.php">Fill in the Blank</a></li>
 			<li><a href="openEnd.php">Open Ended</a></li>
-			<li><a href="#">Pre-Made Questions</a></li>
+			<li><a href="questDatabase.php">Pre-Made Questions</a></li>
 		</ul>
 	</nav>
 	<?php
