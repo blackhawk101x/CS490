@@ -10,7 +10,7 @@ function curlCall($path,$data){
 		curl_close($ch);
 		//echo var_dump(json_decode($res));
 		//echo "Hello";
-		$mid = get_object_vars(json_decode($res));
+		$mid = json_decode($res);
 		return $mid;
 }
 

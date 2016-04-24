@@ -29,7 +29,7 @@ function ajaxCall(loc,data,callback){
 	ajaxRequest.onreadystatechange = function(event) {
 		if (ajaxRequest.readyState == 4 && ajaxRequest.status == 200) {
 			//console.log(JSON.parse(ajaxRequest.responseText));
-			 callback(JSON.parse(ajaxRequest.responseText));
+			callback(JSON.parse(ajaxRequest.responseText));
 		} // end of if
 	} // end of callback
 	
