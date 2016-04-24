@@ -21,6 +21,10 @@ if(isset($_SESSION['test']))
 if(isset($_SESSION['currQuest']))
 	unset($_SESSION['currQuest']);
 
+if(isset($_SESSION['ans'])){
+	unset($_SESSION['ans']);
+}
+
 //***************************************************************************************************************************************
 /*
  populates the teacher's dashboard with the tests
