@@ -3,13 +3,13 @@ window.onload=function(){
 		e.preventDefault();
 		var data;
 		if(document.getElementById("true").classList.contains("active")){
-			ajaxCall("ansQuest.php", {'option1':true} ,function(ret){
+			ajaxCall("ansQuest.php", {'answer':true} ,function(ret){
 				console.log(ret);
 				window.location.reload();
 			});
 		}
 		else if(document.getElementById("false").classList.contains("active")){
-			ajaxCall("ansQuest.php", {'option1':false} ,function(ret){
+			ajaxCall("ansQuest.php", {'answer':false} ,function(ret){
 				console.log(ret);
 				window.location.reload();
 			});
