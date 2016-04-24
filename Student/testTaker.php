@@ -41,7 +41,18 @@ $quest= get_object_vars($_SESSION['test'][$_SESSION['currQuest']]);
 		elseif($quest['type_key']=='3'){
 			?><script type="text/javascript" src="fbView.js"></script> <?php
 		}
-		
+		elseif($done){
+			?>
+				<script type="text/javascript">
+				function done(){
+					ajaxCall("done.php",{},function(e){
+						//window.location.href="../dashboard.php";
+						console.log(e);
+					});
+				}
+				</script>
+			<?php
+		}
 		?>
 	</head>
 	<body style="padding-top:50px">
@@ -51,7 +62,12 @@ $quest= get_object_vars($_SESSION['test'][$_SESSION['currQuest']]);
 	   		<div class="container">
 				<?php
 				if($done){
-					?><h1>Finished with Exam!!!</h1><?php
+					?>
+					<h1>Finished with Exam!!!</h1>
+					<button class="btn btn-lg btn-primary" onclick="done();">
+						Back to Dashboard
+					</button>
+					<?php
 				}
 				else{
 					?> <h1>Question Number <?php echo $_SESSION['currQuest']+1; ?></h1> <?php
