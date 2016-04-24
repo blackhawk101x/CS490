@@ -55,20 +55,33 @@ function tfView($quest){
 			<div class="panel-body">
 			
 				<div class="alert alert-danger" style="display:none" id="errorMsg">
-					<strong>Error: </strong> Please select one option.
+					<strong>Error: </strong> Please select True or False
 				</div>
 				
 				<h3>True or False</h3>
 				<center>
 					<h2><?php echo $quest['question']; ?></h2>
 					<hr>
+					<div class="row">
+						<div class="col-md-3">
+						</div>
+						<div class="col-md-3">
+							<button type="button" class="btn btn-primary btn-lg btn-block" aria-label="Left Align"  id="true" name="tf">
+								True
+							</button>
+						</div>
+						<div class="col-md-3">
+							<button type="button" class="btn btn-default btn-lg btn-block" aria-label="Left Align"  id="false" name="tf">
+								False
+							</button>
+						</div>
+						<div class="col-md-3">
+						</div>
+						
+					</div>
 					<div class="form-group">
-						<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align"  id="true" name="tf" formnovalidate>
-							True
-						</button>
-						<button type="button" class="btn btn-default btn-lg" aria-label="Left Align"  id="false" name="tf" formnovalidate>
-							False
-						</button>
+						
+						
 					</div>
 				</center>
 			</div>
