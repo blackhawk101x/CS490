@@ -67,9 +67,14 @@ function fbView($quest){
 	<form id="fbView">
 		<div class="panel panel-default">
 			<div class="panel-body">
+				<h3>Fill in the Blank</h3>
 				<center>
-					<h3>fb</h3>
-					<?php echo var_dump($quest); ?>
+					<h2><?php echo $quest['question']; ?></h2>
+					<br>
+					<div class="form-group">
+						<label for="optionA">Answer</label>
+						<input id="answer" type="text" class="form-control" placeholder="Answer" required>
+					</div>
 				</center>
 			</div>
 		</div>
