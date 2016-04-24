@@ -91,7 +91,7 @@ function studDash(){
 			</div>
 			<div class="panel-body">
 				<h4>Test Description: <?php echo $exam['test_description']; ?></h4>
-				<h4>Number of Questions: <?php echo $exam['questNums'];?></h4>
+				<h4>Number of Questions: <?php echo $exam['count'];?></h4>
 				<hr>
 				<center>
 					<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align"  onclick="takeTest('<?php echo $exam['test_id']; ?>')">
@@ -155,7 +155,8 @@ function studDash(){
 				function takeTest(testId){
 					console.log(testId);
 					ajaxCall("takeTest.php",{'exam_id':testId.toString()},function(ret){
-						console.log(ret);
+						if(ret.valid)
+							window.location.href="Student/testTaker.php";
 					}); // end of ajax call
 				}
 				</script>
