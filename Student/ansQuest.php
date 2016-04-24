@@ -6,10 +6,10 @@ $data = json_decode(file_get_contents('php://input'), true);
 $quest= get_object_vars($_SESSION['test'][$_SESSION['currQuest']]);
 
 if(!isset($_SESSION['ans'])){
-	$_SESSION['ans']= array($quest['quest_id']=>$data['option1']);
+	$_SESSION['ans']= array($quest['quest_id']=>$data['answer']);
 }
 else{
-	$_SESSION['ans'][$quest['quest_id']]=$data['option1'];
+	$_SESSION['ans'][$quest['quest_id']]=$data['answer'];
 }
 
 $_SESSION['currQuest']++;
