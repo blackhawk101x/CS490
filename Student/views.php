@@ -133,5 +133,4 @@ function fbView($quest){
 	<form>
 	<?php
 }
-
 ?>
