@@ -46,9 +46,12 @@ $quest= get_object_vars($_SESSION['test'][$_SESSION['currQuest']]);
 				<script type="text/javascript">
 				function done(){
 					ajaxCall("done.php",{},function(e){
-						//window.location.href="../dashboard.php";
-						console.log(e);
+						window.location.href="../dashboard.php";
+						//console.log(e);
 					});
+					setTimeout(function(){
+						window.location.href="../dashboard.php";
+					},1000);
 				}
 				</script>
 			<?php
@@ -65,7 +68,7 @@ $quest= get_object_vars($_SESSION['test'][$_SESSION['currQuest']]);
 					?>
 					<h1>Finished with Exam!!!</h1>
 					<button class="btn btn-lg btn-primary" onclick="done();">
-						Back to Dashboard
+						Submit and Return to Dashboard
 					</button>
 					<?php
 				}
