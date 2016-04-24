@@ -7,10 +7,19 @@ if(($_SESSION['valid']!='teacher' || $_SESSION['valid']!='student') && !isset($_
 	header('location: https://web.njit.edu/~dkb9/Software_Design_Project/');
 }
 
-if(isset($_SESSION['testId']) || isset($_SESSION['testName'])){
+
+// unsetting session data if needed
+if(isset($_SESSION['testId']))
 	unset($_SESSION['testId']);
+
+if(isset($_SESSION['testName']))
 	unset($_SESSION['testName']);
-}
+
+if(isset($_SESSION['test']))
+	unset($_SESSION['test']);
+
+if(isset($_SESSION['currQuest']))
+	unset($_SESSION['currQuest']);
 
 //***************************************************************************************************************************************
 /*
