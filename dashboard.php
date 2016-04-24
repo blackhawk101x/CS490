@@ -105,6 +105,17 @@ function studDash(){
 			<div class="panel-body">
 				<h4>Test Description: <?php echo $exam['test_description']; ?></h4>
 				<h4>Number of Questions: <?php echo $exam['count'];?></h4>
+				<h4>Total Points Possible: <?php echo $exam['points']; ?></h4>
+				<h4>Grade: 
+				<?php
+				if($exam['release_status']=='0')
+					echo "Grades not yet release.";
+				else{
+					echo $exam['grade'];
+				}
+				
+				?>
+				</h4>
 				<hr>
 				<center>
 					<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align"  onclick="takeTest('<?php echo $exam['test_id']; ?>')">
