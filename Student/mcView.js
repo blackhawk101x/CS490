@@ -4,26 +4,22 @@ window.onload=function(){
 		
 		if(document.getElementById("option1").classList.contains("active")){
 			ajaxCall("ansQuest.php", {'answer':'option1'} ,function(ret){
-				console.log(ret);
-				//window.location.reload();
+				window.location.reload();
 			});
 		}
 		else if(document.getElementById("option2").classList.contains("active")){
 			ajaxCall("ansQuest.php", {'answer':'option2'} ,function(ret){
-				console.log(ret);
-				//window.location.reload();
+				window.location.reload();
 			});
 		}
 		else if(document.getElementById("option3").classList.contains("active")){
 			ajaxCall("ansQuest.php", {'answer':'option3'} ,function(ret){
-				console.log(ret);
-				//window.location.reload();
+				window.location.reload();
 			});
 		}
 		else if(document.getElementById("option4").classList.contains("active")){
 			ajaxCall("ansQuest.php", {'answer':'option4'} ,function(ret){
-				console.log(ret);
-				//window.location.reload();
+				window.location.reload();
 			});
 		}
 		else
