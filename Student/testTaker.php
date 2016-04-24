@@ -6,39 +6,24 @@ if($_SESSION['valid']!='student' || !isset($_SESSION['UCID'])){
 	header('location: http://afsaccess1.njit.edu/~dkb9/Software_Design_Project/');
 }
 
-if(!isset($_SESSION['testId']) || !isset($_SESSION['testName'])){
+//needs proper session checks!!!!
+if(!isset($_SESSION['testId']) || !isset($_SESSION['test']) || !isset($_SESSION['currQuest'])){
 	header('location: http://afsaccess1.njit.edu/~dkb9/Software_Design_Project/dashboard.php');
 }
 
-//needs proper session checks!!!!
+require_once 'views.php';
 
-function mc($data,$questNum){
-	?>
-	<h3>Question Number <?php echo $questNum; ?></h3>
-	<br>
-	<h4><?php echo $data['quest']; ?></h4>
-	<div data-toggle="buttons-radio" required>
-		<button type="button" class="btn btn-primary myButton" required><?php echo $data['opt1'];?></button>
-		<button type="button" class="btn btn-primary myButton" required><?php echo $data['opt2'];?></button>
-		<button type="button" class="btn btn-primary myButton" required><?php echo $data['opt3'];?></button>
-		<button type="button" class="btn btn-primary myButton" required><?php echo $data['opt4'];?></button>
-	</div>
-	<?php
-	
+if($_SESSION['currQuest']>count($_SESSION['test'])-1){
+	$done=true;
 }
+else
+	$done=false;
 
-function tf($data,$questNum){
-	?>
-	<h3>Question Number <?php echo $questNum?></h3>
-	<br>
-	<h4><?php echo $data['quest'];?></h4>
-	
-	<div data-toggle="buttons-radio">
-		<button type="button" class="btn btn-primary myButton" required>True</button>
-		<button type="button" class="btn btn-primary myButton" required>False</button>
-	</div>
-	<?php
-}
+// getting the question information from session and 
+$quest= get_object_vars($_SESSION['test'][$_SESSION['currQuest']]);
+
+
+
 
 ?>
 <html>
@@ -46,41 +31,45 @@ function tf($data,$questNum){
 		<title>Test Taker</title>
 		<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
 		<script type="text/javascript" src="callHandler.js"></script>
+		<?php
+		if($quest['type_key']=='1'){
+			?><script type="text/javascript" src="mcView.js"></script> <?php
+		}
+		elseif($quest['type_key']=='2'){
+			?><script type="text/javascript" src="tfView.js"></script> <?php
+		}
+		elseif($quest['type_key']=='3'){
+			?><script type="text/javascript" src="fbView.js"></script> <?php
+		}
+		
+		?>
 	</head>
-	<body style="padding-top:70px">
+	<body style="padding-top:50px">
 	
 		<?php require_once 'navBar.php'; ?>
+		<div class="jumbotron">
+	   		<div class="container">
+				<?php
+				if($done){
+					?><h1>Finished with Exam!!!</h1><?php
+				}
+				else{
+					?> <h1>Question Number <?php echo $_SESSION['currQuest']+1; ?></h1> <?php
+				}
+				?>
+				
+			</div>
+		</div>
 	
 		<div class="container">
-			<form id="testArea">
 			<?php
-			//echo var_dump($_SESSION);
-			$questList=curlCall('http://afsaccess1.njit.edu/~dkb9/Software_Design_Project/Student/simTest.php',array('testId'=>$_SESSION['testId'],'questNums'=>true));
-			//echo var_dump($questList);
-			foreach($questList as $key => $id){
-				$quest=curlCall('http://afsaccess1.njit.edu/~dkb9/Software_Design_Project/Student/simTest.php',array('questId'=>$id,'testId'=>$_SESSION['testId']));
-				//echo var_dump($quest);
-				if($quest['questType']=='mc'){
-					mc($quest,$key);
-				}elseif($quest['questType']=='tf'){
-					tf($quest,$key);
-				}elseif($quest['questType']=='fb'){
-					
-				}elseif($quest['questType']=='oe'){
-					
-				}
-				echo "<hr>";
-			}
+			if($quest['type_key']=='1')
+				mcView($quest);
+			elseif($quest['type_key']=='2')
+				tfView($quest);
+			elseif($quest['type_key']=='3')
+				fbView($quest);
 			?>
-			
-			
-			<button type="submit" type="button" class="btn btn-primary btn-lg" aria-label="Left Align">
-				<span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
-				Save and Submit
-			</button>
-			
-			</form>
-			<script type="text/javascript" src="testTaker.js"></script>
 		</div>
 	</body>
 </html>
