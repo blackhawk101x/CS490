@@ -84,7 +84,7 @@ function ansPanel($stud){
 			<span class="sr-only">Error:</span>
 			<div id="messageContent">
 				<span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
-				You did not answer this question correctly
+				You did not answer this question correctly.
 			</div>
 		</div>
 		<?php
@@ -209,7 +209,7 @@ function fbpanel($quest){
 							$stud=$b;
 							break;
 						}
-					}	
+					}
 					?>
 					<div class="panel panel-default">
 						<div class="panel-body">
