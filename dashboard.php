@@ -96,7 +96,7 @@ function studDash(){
 	$examList=curlCall("https://web.njit.edu/~rs334/cs490/beta/rimi/student/exam/list_exam.php",array("user_id"=>"1"));
 	foreach($examList as $key=>$exam){
 		$exam=get_object_vars($exam);
-		echo var_dump($exam);
+		//echo var_dump($exam);
 		?>
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -109,19 +109,44 @@ function studDash(){
 				<h4>Grade: 
 				<?php
 				if($exam['release_status']=='0')
-					echo "Grades not yet release.";
+					if($exam['countVal']=='0')
+						echo "Have not taken exam yet.";
+					else
+						echo "Grades not yet release.";
 				else{
-					echo $exam['grade'];
+					echo $exam['pointsScored'];
 				}
-				
 				?>
 				</h4>
 				<hr>
 				<center>
-					<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align"  onclick="takeTest('<?php echo $exam['test_id']; ?>')">
-						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-						Take <?php echo $exam['test_name']; ?>
-					</button>
+				<?php
+				if($exam['countVal']=='0'){
+					?>
+						<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align"  onclick="takeTest('<?php echo $exam['test_id']; ?>')">
+							<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+							Take <?php echo $exam['test_name']; ?>
+						</button>					
+					<?php
+				}
+				else{
+					if($exam['release_status']=='1'){
+						?>
+						<button type="button" class="btn btn-default btn-lg" aria-label="Left Align"  onclick="viewTest('<?php echo $exam['test_id']; ?>')">
+							<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+							View <?php echo $exam['test_name']; ?>
+						</button>
+						<?php
+					}else{
+						?>
+						<button type="button" class="btn btn-default btn-lg" aria-label="Left Align"  disabled>
+							<span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+							View <?php echo $exam['test_name']; ?>
+						</button>
+						<?php
+					}
+				}
+				?>
 				</center>
 			</div>
 		</div>
@@ -177,13 +202,20 @@ function studDash(){
 				?>
 				<script>
 				function takeTest(testId){
-					console.log(testId);
 					ajaxCall("takeTest.php",{'exam_id':testId.toString()},function(ret){
 						if(ret.valid)
 							window.location.href="Student/testTaker.php";
 					}); // end of ajax call
 				}
+				
+				function viewTest(testId){
+					ajaxCall("viewTest.php",{'testId':testId},function(ret){
+						if(ret.valid)
+							window.location.href="Student/viewTest.php";
+					});
+				}
 				</script>
+				
 				<?php
 			}
 		?>
