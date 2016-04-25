@@ -3,12 +3,12 @@ session_start();
 require_once 'curlHandle.php';
 
 if($_SESSION['valid']!='student' || !isset($_SESSION['UCID'])){
-	header('location: http://afsaccess1.njit.edu/~dkb9/Software_Design_Project/');
+	header('location: http://web.njit.edu/~dkb9/Software_Design_Project/');
 }
 
 //needs proper session checks!!!!
 if(!isset($_SESSION['testId']) || !isset($_SESSION['test']) || !isset($_SESSION['currQuest'])){
-	header('location: http://afsaccess1.njit.edu/~dkb9/Software_Design_Project/dashboard.php');
+	header('location: http://web.njit.edu/~dkb9/Software_Design_Project/dashboard.php');
 }
 
 require_once 'views.php';
