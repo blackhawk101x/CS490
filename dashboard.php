@@ -93,7 +93,7 @@ function teachDash(){
 populates the student dashboard
 */
 function studDash(){
-	$examList=curlCall("https://web.njit.edu/~rs334/cs490/beta/rimi/student/exam/list_exam.php",array("user_id"=>"1"));
+	$examList=curlCall("https://web.njit.edu/~rs334/cs490/beta/rimi/student/exam/list_exam.php",array("user_id"=>$_SESSION['id']));
 	foreach($examList as $key=>$exam){
 		$exam=get_object_vars($exam);
 		//echo var_dump($exam);

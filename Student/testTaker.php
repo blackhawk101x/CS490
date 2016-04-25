@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'curlHandle.php';
+require_once 'navBar.php';
 
 if($_SESSION['valid']!='student' || !isset($_SESSION['UCID'])){
 	header('location: http://web.njit.edu/~dkb9/Software_Design_Project/');
@@ -60,7 +61,7 @@ $quest= get_object_vars($_SESSION['test'][$_SESSION['currQuest']]);
 	</head>
 	<body style="padding-top:50px">
 	
-		<?php require_once 'navBar.php'; ?>
+		<?php navTake(); ?>
 		<div class="jumbotron">
 	   		<div class="container">
 				<?php
