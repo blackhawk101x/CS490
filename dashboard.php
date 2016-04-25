@@ -134,14 +134,14 @@ function studDash(){
 						?>
 						<button type="button" class="btn btn-default btn-lg" aria-label="Left Align"  onclick="viewTest('<?php echo $exam['test_id']; ?>')">
 							<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-							View <?php echo $exam['test_name']; ?>
+							Review <?php echo $exam['test_name']; ?>
 						</button>
 						<?php
 					}else{
 						?>
 						<button type="button" class="btn btn-default btn-lg" aria-label="Left Align"  disabled>
 							<span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-							View <?php echo $exam['test_name']; ?>
+							Review <?php echo $exam['test_name']; ?>
 						</button>
 						<?php
 					}
