@@ -52,7 +52,7 @@ function toolBarRight(){
 					<li><a role="button" class="btn btn-lg btn-primary" href="https://web.njit.edu/~dkb9/Software_Design_Project/Educator/multiChoice.php">Make a Multichoice Question</a></li>
 					<li><a role="button" class="btn btn-lg btn-primary" href="https://web.njit.edu/~dkb9/Software_Design_Project/Educator/trueFalse.php">Make a True and False Question</a></li>
 					<li><a role="button" class="btn btn-lg btn-primary" href="https://web.njit.edu/~dkb9/Software_Design_Project/Educator/fillBlank.php">Make a Fill in the Blank Question</a></li>
-					<li><a role="button" class="btn btn-lg btn-primary" href="https://web.njit.edu/~dkb9/Software_Design_Project/Educator/">Make a Open Ended Question</a></li>
+					<li><a role="button" class="btn btn-lg btn-primary" href="https://web.njit.edu/~dkb9/Software_Design_Project/Educator/openEnd.php">Make a Open Ended Question</a></li>
 					<li><a role="button" class="btn btn-lg btn-primary" href="https://web.njit.edu/~dkb9/Software_Design_Project/Educator/questDatabase.php">See DataBase of Questions</a></li>
 				</ul>
 			</div>
