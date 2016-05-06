@@ -23,29 +23,6 @@ if(isset($_SESSION['testId'])){
 	}
 }
 
-/* 
-Creates the add to test button according to whether it is already in the exam or the user is even edditing the exam
-*/
-function addToExamBtn($questId,$questDB){
-	if(isset($_SESSION['testId'])){
-		?> <button type="button" class="btn btn-primary btn-lg" aria-label="Left Align" <?php 
-		if(in_array($questId,$questDB)){
-			?> disabled>
-			Already in Test
-			<?php
-		}
-		else{
-			?> onclick="addQuestTest(<?php echo $questId; ?>)"> 
-			<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
-				Add to Test
-			
-			<?php
-		}
-		?> </button><?php
-	}
-	// do nothing for now
-} // end of function addtoExamBtn
-
 function optActive($ans,$opt){
 	if(($ans=='T' && $opt) || ($ans=='F' && !$opt))
 		return "list-group-item-success";

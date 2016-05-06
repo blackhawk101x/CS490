@@ -1,7 +1,8 @@
 function addQuestTest(questId){
 	ajaxCall("addQuestTest.php",{"quest_id":questId},function(ret){
 		if(ret.valid){
-			window.location.reload();
+			document.getElementById("b"+questId.toString()).disabled=true;
+			document.getElementById("b"+questId.toString()).innerHTML="Already in Test";
 		}
 	});
 }
