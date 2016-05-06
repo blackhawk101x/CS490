@@ -79,6 +79,47 @@ function addToExamBtn($questId,$questDB){
 						<textarea class="form-control" rows="5" id="ans" required name="textArea"></textarea>
 					</div>
 					
+					<div class="row">
+						<div class="col-md-5">
+							<div class="form-group">
+								<label for="input1">Sample Input of the function</label>
+								<input id="input1" type="text" class="form-control" placeholder="Sample Input" required>
+							</div>
+						</div>
+						
+						<div class="col-md-2">
+						</div>
+						
+						<div class="col-md-5">
+							<div class="form-group">
+								<label for="input2">Sample Input of the Function</label>
+								<input id="input2" type="text" class="form-control" placeholder="Sample Input" required>
+							</div>
+						</div>
+						
+						<div class="col-md-5">
+							<div class="form-group">
+								<label for="ans1">Returned Value of the Function</label>
+								<input id="ans1" type="text" class="form-control" placeholder="Answer" required>
+							</div>
+						</div>
+						
+						<div class="col-md-2">
+						</div>
+						
+						<div class="col-md-5">
+							<div class="form-group">
+								<label for="ans2">Returned Value of the Function</label>
+								<input id="ans2" type="text" class="form-control" placeholder="Answer" required>
+							</div>
+						</div>
+						
+					</div>
+					
+					<div class="form-group">
+						<label for="points">Total Number of Points</label>
+						<input type="number" class="form-control" placeholder="Max points" id="points" name="points" required>
+					</div>
 					<center>
 						<button type="submit" type="button" class="btn btn-primary btn-lg" aria-label="Left Align"  id="submitBtn">
 							<span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
@@ -93,7 +134,14 @@ function addToExamBtn($questId,$questDB){
 				</form>
 			</div>
 			<div class="col-md-6">
+				<center>
+					<h3>Select an existing Question</h3>
+				</center>
+				<?php
+				//curl request
 				
+				
+				?>
 			</div>
 			<div class="col-md-12">
 				<hr>
