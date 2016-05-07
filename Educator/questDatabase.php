@@ -137,7 +137,18 @@ function fbpanel($quest){
 }
 
 
-
+function translateType($type){
+	switch($type){
+		case '1':
+			return "mc";
+		case '2':
+			return "tf";
+		case '3':
+			return "fb";
+		case '4':
+			return "oe";
+	}
+}
 
 
 ?>
@@ -147,6 +158,9 @@ function fbpanel($quest){
 		<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
 		<script type="text/javascript" src="callHandler.js"></script>
 		<script type="text/javascript" src="rmQuest.js"></script>
+		<script type="text/javascript" src="search.js"></script>
+		<script type="text/javascript" src="checkSort.js"></script>
+		
 		<?php 
 		if(isset($_SESSION['testId'])){
 			?>
@@ -155,7 +169,24 @@ function fbpanel($quest){
 		}
 		?>
 	</head>
-	<body style="padding-top: 70px;">
+	<body style="padding-top: 50px;">
+		<div class="jumbotron">
+	   		<div class="container">
+        		<div class="row">
+					<div class="col-md-4">
+						<input id="search" type="text" class="form-control" placeholder="Search" onkeyup="searchPage()">
+					</div>
+					<div class="col-md-3">
+					</div>
+					<div class="col-md-5">
+						<label class="checkbox-inline"><input id="mcCh" type="checkbox" checked>Multichoice</label>
+						<label class="checkbox-inline"><input id="tfCh" type="checkbox" checked>True/False</label>
+						<label class="checkbox-inline"><input id="fbCh" type="checkbox" checked>Fill in the Blank</label>
+						<label class="checkbox-inline"><input id="oeCh" type="checkbox" checked>Open Ended</label>
+					</div>
+				</div>
+    		</div>
+    	</div>
 		<?php navBar(); ?>
 		<div class="container">
 			<?php toolBar(); ?>
@@ -163,7 +194,7 @@ function fbpanel($quest){
 				foreach($questList as $key=>$quest){
 					$quest=get_object_vars($quest);
 					?>
-					<div class="panel panel-default">
+					<div class="panel panel-default <?php echo translateType($quest['type_key']); ?>" id="p<?php echo $quest['question_id'];?>" name="questions">
 						<div class="panel-body">
 							<?php
 							//echo var_dump($quest);
