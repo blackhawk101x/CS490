@@ -84,6 +84,4 @@ function addToExamBtn($questId,$questDB){
 		?> </button><?php
 	}
 } // end of function addtoExamBtn
-
-
 ?>
