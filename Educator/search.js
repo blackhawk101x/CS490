@@ -34,7 +34,7 @@ function isChecked(panel){
 function isMatch(panel,txt){
 	// getting rid of the html tags and button contents
 	var data = panel.innerText || panel.textContent;
-	var baseInfo =["Question:","Answer:","Edit Question","Already in Test","Add to Test","Remove from Database"];
+	var baseInfo =["Question:","Answer:","Edit Question","Already in Test","Add to Test","Remove from Database", "Points:"];
 	for(var i =0;i<baseInfo.length;i++){
 		data=data.replace(baseInfo[i],"");
 	}

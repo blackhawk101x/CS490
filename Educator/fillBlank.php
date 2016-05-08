@@ -92,13 +92,15 @@ if(isset($_SESSION['testId'])){
 							//echo var_dump($questList);
 							foreach($questList as $key => $quest){
 								$quest=get_object_vars($quest);
+								
 								?>
 								<div class="panel panel-default" id="p<?php echo $quest['question_id']; ?>" name="questions">
 									<div class="panel-body">
+										
 										<center>
 											<h3>Question: <?php echo $quest['question']; ?></h3>
 											<h4>Answer: <?php echo $quest['ans'];?></h4>
-											
+											<h5>Points: <?php echo $quest['points']; ?></h5>
 											<?php 
 												addtoExamBtn($quest['question_id'],$questDB);
 											?>

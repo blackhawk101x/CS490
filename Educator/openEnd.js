@@ -10,7 +10,8 @@ window.onload=function(){
 		data['option4']=document.getElementById("ans").value;
 		data['points']=document.getElementById("points").value;
 		ajaxCall("addQuest.php",data,function(ret){
-			console.log(ret);
+			if(ret.valid)
+				window.location.reload();
 		});
 	}
 }

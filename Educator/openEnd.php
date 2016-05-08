@@ -31,6 +31,7 @@ if(isset($_SESSION['testId'])){
 		<script type="text/javascript" src="callHandler.js"></script>
 		<script type="text/javascript" src="openEnd.js"></script>
 		<script type="text/javascript" src="rmQuest.js"></script>
+		<script type="text/javascript" src="search.js"></script>
 		<?php 
 		if(isset($_SESSION['testId'])){
 			?>
@@ -77,13 +78,16 @@ if(isset($_SESSION['testId'])){
 			<div class="col-md-6">
 				<center>
 					<h3>Select an existing Question</h3>
+					<input id="search" type="text" class="form-control" placeholder="Search for Existing Question" onkeyup="searchPage()">
+					<br>
 				</center>
-				<?php
-					$questList=curlCall("https://web.njit.edu/~rs334/cs490/beta/rimi/test/get_meta.php",array("user_id"=>1,"question_type"=>3, "count"=>0));
-					foreach($questList as $key => $quest){
-						$quest=get_object_vars($quest);
+				<div  style="max-height:70%; overflow:scroll; overflow-x:hidden;">
+					<?php
+						$questList=curlCall("https://web.njit.edu/~rs334/cs490/beta/rimi/test/get_meta.php",array("user_id"=>1,"question_type"=>3, "count"=>0));
+						foreach($questList as $key => $quest){
+							$quest=get_object_vars($quest);
 								?>
-								<div class="panel panel-default" id="p<?php echo $quest['question_id']; ?>">
+								<div class="panel panel-default" id="p<?php echo $quest['question_id']; ?>" name="questions">
 									<div class="panel-body">
 										<center>
 											<h3>Question: <?php echo $quest['question']; ?></h3>
@@ -101,8 +105,9 @@ if(isset($_SESSION['testId'])){
 									</div>
 								</div>
 							<?php
-					}
-				?>
+						}
+					?>
+				</div>
 			</div>
 			<div class="col-md-12">
 				<hr>
