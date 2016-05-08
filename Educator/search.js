@@ -55,7 +55,8 @@ function togglePanel(txt,panel){
 	}
 	else{
 		if(!isChecked(panel)){
-			unfade(panel);
+			if(panel.style.display=='none')
+				unfade(panel);
 		}
 	}
 	

@@ -54,6 +54,7 @@ function optActive($ans,$option){
 		<script type="text/javascript" src="callHandler.js"></script>
 		<script type="text/javascript" src="multiChoice.js"></script>
 		<script type="text/javascript" src="rmQuest.js"></script>
+		<script type="text/javascript" src="search.js"></script>
 		<?php 
 		if(isset($_SESSION['testId'])){
 			?>
@@ -139,8 +140,10 @@ function optActive($ans,$option){
 				<div class="col-md-6">
 					<center>
 						<h3>Select an existing Question</h3>
+						<input id="search" type="text" class="form-control" placeholder="Search for Existing Question" onkeyup="searchPage()">
+						<br>
 					</center>
-					<div style="max-height:80%; overflow:scroll; overflow-x:hidden;">
+					<div style="max-height:70%; overflow:scroll; overflow-x:hidden;">
 					
 						<?php 
 						// getting the all the multichocie questions in the database
@@ -149,7 +152,7 @@ function optActive($ans,$option){
 							//echo var_dump($quest);
 							$quest=get_object_vars($quest);
 							?>
-							<div class="panel panel-default" id="p<?php echo $quest['question_id']; ?>">
+							<div class="panel panel-default" id="p<?php echo $quest['question_id']; ?>" name="questions">
 								<div class="panel-body">
 									<center>
 										<h4>Question: <?php echo $quest['question']; ?></h4>
