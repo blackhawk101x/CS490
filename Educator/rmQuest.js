@@ -10,6 +10,7 @@ function rmQuest(questId){
 	ajaxCall("rmQuest.php",{'question_id':questId.toString()},function(ret){
 		//console.log(ret);
 		if(ret.valid){ // reloads the page on success
+			document.getElementById("p"+questId.toString()).className+=" rm ";
 			fade(document.getElementById("p"+questId.toString()));
 		}
 	});
@@ -20,11 +21,12 @@ A simple function that is used to remove the question from the test
 Parameters: The Question ID number as an integer
 Return:
 */
-function rmQuestTest(questId){
+function rmQuestTest(questId,questTestId){
 	//ajax call to the php script
-	ajaxCall("rmQuestTest.php",{"exam_ques_id":questId},function(ret){
+	ajaxCall("rmQuestTest.php",{"exam_ques_id":questTestId},function(ret){
 		if(ret.valid){
-			window.location.reload();
+			document.getElementById("p"+questId.toString()).className+=" rm ";
+			fade(document.getElementById("p"+questId.toString()));
 		}
 	});
 }

@@ -16,6 +16,14 @@ require_once 'navBar.php';
 
 $questList=curlCall("https://web.njit.edu/~rs334/cs490/beta/rimi/meta/exam/exam_info.php",array("user_id"=>$_SESSION['id'],"exam_id"=>$_SESSION['testId']));
 
+function removeQuestTest($quest){
+	?>
+	<button type="button" class="btn btn-default btn-lg" aria-label="Left Align" onclick="rmQuestTest(<?php echo $quest['quest_id']; ?>,<?php echo $quest['test_q_id']; ?>)">
+		<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+		Remove from Test
+	</button>
+	<?php
+}
 
 /*
 translates the the character into a reconizable string
@@ -77,10 +85,7 @@ function mcPanel($quest){
 				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 				Edit Question
 			</button>
-			<button type="button" class="btn btn-default btn-lg" aria-label="Left Align" onclick="rmQuestTest(<?php echo $quest['test_q_id']; ?>)">
-				<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-				Remove from Test
-			</button>
+			<?php removeQuestTest($quest); ?>
 			
 		</div>
 	</center>
@@ -125,10 +130,7 @@ function tfPanel($quest){
 				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 				Edit Question
 			</button>
-			<button type="button" class="btn btn-default btn-lg" aria-label="Left Align" onclick="rmQuestTest(<?php echo $quest['test_q_id']; ?>)">
-				<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-				Remove from Test
-			</button>
+			<?php removeQuestTest($quest); ?>
 		</div>
 	</center>
 	<?php
@@ -147,12 +149,25 @@ function fbpanel($quest){
 			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 			Edit Question
 		</button>
-		<button type="button" class="btn btn-default btn-lg" aria-label="Left Align" onclick="rmQuestTest(<?php echo $quest['test_q_id']; ?>)">
-			<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-			Remove from Test
-		</button>
+		<?php removeQuestTest($quest); ?>
 	</center>
 	<?php
+}
+
+/*
+Designed for the checkbox filtering
+*/
+function translateType($type){
+	switch($type){
+		case '1':
+			return "mc";
+		case '2':
+			return "tf";
+		case '3':
+			return "fb";
+		case '4':
+			return "oe";
+	}
 }
 
 ?>
@@ -163,13 +178,14 @@ function fbpanel($quest){
 		<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
 		<script type="text/javascript" src="callHandler.js"></script>
 		<script type="text/javascript" src="rmQuest.js"></script>
+		<script type="text/javascript" src="search.js"></script>
+		<script type="text/javascript" src="checkSort.js"></script>
 	</head>
 	<body style="padding-top: 25px;">
 		<?php navBar(); ?>
 		<div class="jumbotron">
 	   		<div class="container">
         		<h1><?php echo $_SESSION['testName'];?></h1>
-				
     		</div>
     	</div>
     	
@@ -177,12 +193,29 @@ function fbpanel($quest){
 			<div class="rows">
 			<?php
 				toolBar();
+			?>
+			<div class="row">
+				<div class="col-md-5">
+					<input id="search" type="text" class="form-control" placeholder="Search for Existing Question" onkeyup="searchPage()">
+				</div>
+				<div class="col-md-2">
+					
+				</div>
+				<div class="col-md-5">
+					<label class="checkbox-inline"><input id="mcCh" type="checkbox" checked>Multichoice</label>
+					<label class="checkbox-inline"><input id="tfCh" type="checkbox" checked>True/False</label>
+					<label class="checkbox-inline"><input id="fbCh" type="checkbox" checked>Fill in the Blank</label>
+					<label class="checkbox-inline"><input id="oeCh" type="checkbox" checked>Open Ended</label>
+				</div>
+			</div>
+			<br>
+			<?php	
 				echo var_dump($questList);
 				//echo var_dump($questList);
 				foreach($questList as $key=>$quest){
 					$quest=get_object_vars($quest);
 					?>
-					<div class="panel panel-default">
+					<div class="panel panel-default <?php echo translateType($quest['type_key']); ?>" id="p<?php echo $quest['quest_id'];?>" name="questions">
 						<div class="panel-body">
 							<h4>Question Number <?php echo $key+1;?></h4>
 							<?php
