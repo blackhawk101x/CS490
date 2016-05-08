@@ -48,17 +48,23 @@ function isMatch(panel,txt){
 */
 function togglePanel(txt,panel){
 	
-	// if the string is a match
-	if(!isMatch(panel,txt)){
-		if(panel.style.display!='none')
-			fade(panel);
+	if(hasClass(panel,"rm")){
+		return;
 	}
 	else{
-		if(!isChecked(panel)){
-			if(panel.style.display=='none')
-				unfade(panel);
+		// if the string is NOT a match
+		if(!isMatch(panel,txt)){
+			if(panel.style.display!='none')
+				fade(panel);
+		}
+		else{
+			if(!isChecked(panel)){
+				if(panel.style.display=='none')
+					unfade(panel);
+			}	
 		}
 	}
+	
 	
 	
 	

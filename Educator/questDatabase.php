@@ -169,27 +169,25 @@ function translateType($type){
 		}
 		?>
 	</head>
-	<body style="padding-top: 50px;">
-		<div class="jumbotron">
-	   		<div class="container">
-        		<div class="row">
-					<div class="col-md-4">
-						<input id="search" type="text" class="form-control" placeholder="Search" onkeyup="searchPage()">
-					</div>
-					<div class="col-md-3">
-					</div>
-					<div class="col-md-5">
-						<label class="checkbox-inline"><input id="mcCh" type="checkbox" checked>Multichoice</label>
-						<label class="checkbox-inline"><input id="tfCh" type="checkbox" checked>True/False</label>
-						<label class="checkbox-inline"><input id="fbCh" type="checkbox" checked>Fill in the Blank</label>
-						<label class="checkbox-inline"><input id="oeCh" type="checkbox" checked>Open Ended</label>
-					</div>
-				</div>
-    		</div>
-    	</div>
+	<body style="padding-top: 70px;">
 		<?php navBar(); ?>
 		<div class="container">
 			<?php toolBar(); ?>
+			<div class="row">
+				<div class="col-md-5">
+					<input id="search" type="text" class="form-control" placeholder="Search for Existing Question" onkeyup="searchPage()">
+				</div>
+				<div class="col-md-2">
+					
+				</div>
+				<div class="col-md-5">
+					<label class="checkbox-inline"><input id="mcCh" type="checkbox" checked>Multichoice</label>
+					<label class="checkbox-inline"><input id="tfCh" type="checkbox" checked>True/False</label>
+					<label class="checkbox-inline"><input id="fbCh" type="checkbox" checked>Fill in the Blank</label>
+					<label class="checkbox-inline"><input id="oeCh" type="checkbox" checked>Open Ended</label>
+				</div>
+			</div>
+			<br>
 			<?php
 				foreach($questList as $key=>$quest){
 					$quest=get_object_vars($quest);

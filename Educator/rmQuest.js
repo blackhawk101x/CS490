@@ -10,7 +10,7 @@ function rmQuest(questId){
 	ajaxCall("rmQuest.php",{'question_id':questId.toString()},function(ret){
 		//console.log(ret);
 		if(ret.valid){ // reloads the page on success
-			document.getElementById("p"+questId.toString()).className+=" rm ";
+			document.getElementById("p"+questId.toString()).className+=" rm";
 			fade(document.getElementById("p"+questId.toString()));
 		}
 	});
@@ -25,7 +25,7 @@ function rmQuestTest(questId,questTestId){
 	//ajax call to the php script
 	ajaxCall("rmQuestTest.php",{"exam_ques_id":questTestId},function(ret){
 		if(ret.valid){
-			document.getElementById("p"+questId.toString()).className+=" rm ";
+			document.getElementById("p"+questId.toString()).className+=" rm";
 			fade(document.getElementById("p"+questId.toString()));
 		}
 	});
