@@ -22,28 +22,6 @@ if(isset($_SESSION['testId'])){
 	}
 }
 
-/* 
-Creates the add to test button according to whether it is already in the exam or the user is even edditing the exam
-*/
-function addToExamBtn($questId,$questDB){
-	if(isset($_SESSION['testId'])){
-		?> <button type="button" class="btn btn-primary btn-lg" aria-label="Left Align" <?php 
-		if(in_array($questId,$questDB)){
-			?> disabled>
-			Already in Test
-			<?php
-		}
-		else{
-			?> onclick="addQuestTest(<?php echo $questId; ?>)"> 
-			<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
-				Add to Test
-			
-			<?php
-		}
-		?> </button><?php
-	}
-	// do nothing for now
-} // end of function addtoExamBtn
 
 ?>
 
@@ -79,43 +57,6 @@ function addToExamBtn($questId,$questDB){
 						<textarea class="form-control" rows="5" id="ans" required name="textArea"></textarea>
 					</div>
 					
-					<div class="row">
-						<div class="col-md-5">
-							<div class="form-group">
-								<label for="input1">Sample Input of the function</label>
-								<input id="input1" type="text" class="form-control" placeholder="Sample Input" required>
-							</div>
-						</div>
-						
-						<div class="col-md-2">
-						</div>
-						
-						<div class="col-md-5">
-							<div class="form-group">
-								<label for="input2">Sample Input of the Function</label>
-								<input id="input2" type="text" class="form-control" placeholder="Sample Input" required>
-							</div>
-						</div>
-						
-						<div class="col-md-5">
-							<div class="form-group">
-								<label for="ans1">Returned Value of the Function</label>
-								<input id="ans1" type="text" class="form-control" placeholder="Answer" required>
-							</div>
-						</div>
-						
-						<div class="col-md-2">
-						</div>
-						
-						<div class="col-md-5">
-							<div class="form-group">
-								<label for="ans2">Returned Value of the Function</label>
-								<input id="ans2" type="text" class="form-control" placeholder="Answer" required>
-							</div>
-						</div>
-						
-					</div>
-					
 					<div class="form-group">
 						<label for="points">Total Number of Points</label>
 						<input type="number" class="form-control" placeholder="Max points" id="points" name="points" required>
@@ -138,9 +79,10 @@ function addToExamBtn($questId,$questDB){
 					<h3>Select an existing Question</h3>
 				</center>
 				<?php
-				//curl request
-				
-				
+					$questList=curlCall("https://web.njit.edu/~rs334/cs490/beta/rimi/test/get_meta.php",array("user_id"=>1,"question_type"=>3, "count"=>0));
+					foreach($questList as $key => $quest){
+						echo var_dump($quest);
+					}
 				?>
 			</div>
 			<div class="col-md-12">
