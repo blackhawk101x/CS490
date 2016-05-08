@@ -3,8 +3,11 @@ window.onload=function(){
 	function toggleDisplay(check,panes){
 		if(check){
 			for(var i=0;i<panes.length;i++){
-				if(panes[i].style.display=='none')
+				
+				if(isMatch(panes[i],document.getElementById("search").value)){
+					if(panes[i].style.display=='none')
 					unfade(panes[i]);
+				}
 			}
 		}
 		else{
