@@ -41,6 +41,7 @@ function optActive($ans,$opt){
 		<script type="text/javascript" src="callHandler.js"></script>
 		<script type="text/javascript" src="rmQuest.js"></script>
 		<script type="text/javascript" src="trueFalse.js"></script>
+		<script type="text/javascript" src="search.js"></script>
 		<?php 
 		if(isset($_SESSION['testId'])){
 			?>
@@ -104,8 +105,10 @@ function optActive($ans,$opt){
 				<div class="col-md-6">
 					<center>
 						<h3>Select an existing Question</h3>
+						<input id="search" type="text" class="form-control" placeholder="Search for Existing Question" onkeyup="searchPage()">
+						<br>
 					</center>
-					<div style="max-height:80%; overflow:scroll; overflow-x:hidden;">
+					<div style="max-height:70%; overflow:scroll; overflow-x:hidden;">
 						<?php
 						
 						$questList=curlCall("https://web.njit.edu/~rs334/cs490/beta/rimi/test/get_meta.php",array("user_id"=>1,"question_type"=>1, "count"=>0));
@@ -113,7 +116,7 @@ function optActive($ans,$opt){
 						foreach($questList as $key => $quest){
 							$quest= get_object_vars($quest);
 							?>
-							<div class="panel panel-default" id="p<?php echo $quest['question_id']; ?>">
+							<div class="panel panel-default" id="p<?php echo $quest['question_id']; ?>" name="questions">
 								<div class="panel-body">
 									<center>
 										<h4>Question: <?php echo $quest['question']; ?></h4>
