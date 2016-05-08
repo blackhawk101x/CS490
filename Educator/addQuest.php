@@ -18,6 +18,9 @@ elseif($data['type']=='fb'){
 	$ret=get_object_vars(curlCall('https://web.njit.edu/~rs334/cs490/beta/rimi/questions/fb/middle_fb.php',$data));
 	//echo json_encode(array('valid'=>$ret['valid']));
 }
+elseif($data['type']=='oe'){
+	$ret=get_object_vars(curlCall('https://web.njit.edu/~rs334/cs490/beta/rimi/questions/oe/middle_oe.php',$data));
+}
 else{
 	//echo json_encode(array('valid'=>false));
 	$ret=array('valid'=>false);

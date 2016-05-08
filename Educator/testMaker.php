@@ -177,6 +177,7 @@ function fbpanel($quest){
 			<div class="rows">
 			<?php
 				toolBar();
+				echo var_dump($questList);
 				//echo var_dump($questList);
 				foreach($questList as $key=>$quest){
 					$quest=get_object_vars($quest);
@@ -194,6 +195,9 @@ function fbpanel($quest){
 							}
 							elseif($quest['type_key']=='3'){
 								fbpanel($quest);
+							}
+							elseif($quest['type_key']=='4'){
+								echo var_dump($quest);
 							}
 							?>
 						</div>

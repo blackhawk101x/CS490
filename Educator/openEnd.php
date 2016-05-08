@@ -81,7 +81,26 @@ if(isset($_SESSION['testId'])){
 				<?php
 					$questList=curlCall("https://web.njit.edu/~rs334/cs490/beta/rimi/test/get_meta.php",array("user_id"=>1,"question_type"=>3, "count"=>0));
 					foreach($questList as $key => $quest){
-						echo var_dump($quest);
+						$quest=get_object_vars($quest);
+								?>
+								<div class="panel panel-default" id="p<?php echo $quest['question_id']; ?>">
+									<div class="panel-body">
+										<center>
+											<h3>Question: <?php echo $quest['question']; ?></h3>
+											<h4>Answer: <?php echo $quest['answer'];?></h4>
+											
+											<?php 
+												addtoExamBtn($quest['question_id'],$questDB);
+											?>
+											
+											<button type="button" class="btn btn-default btn-lg" aria-label="Left Align" onclick="rmQuest(<?php echo $quest['question_id']?>)">
+												<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+												Remove
+											</button>
+										</center>
+									</div>
+								</div>
+							<?php
 					}
 				?>
 			</div>
