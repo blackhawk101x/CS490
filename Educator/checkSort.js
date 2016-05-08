@@ -3,8 +3,9 @@ window.onload=function(){
 	function toggleDisplay(check,panes){
 		if(check){
 			for(var i=0;i<panes.length;i++){
-				
-				if(isMatch(panes[i],document.getElementById("search").value)){
+				if(hasClass(panes[i],'rm'))
+					continue;
+				else if(isMatch(panes[i],document.getElementById("search").value)){
 					if(panes[i].style.display=='none')
 					unfade(panes[i]);
 				}
@@ -12,7 +13,9 @@ window.onload=function(){
 		}
 		else{
 			for(var i=0;i<panes.length;i++){
-				if(panes[i].style.display=='block' || !panes[i].style.display)
+				if(hasClass(panes[i],'rm'))
+					continue;
+				else if(panes[i].style.display=='block' || !panes[i].style.display)
 					fade(panes[i]);
 			}
 		}
