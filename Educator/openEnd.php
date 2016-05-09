@@ -91,7 +91,7 @@ if(isset($_SESSION['testId'])){
 									<div class="panel-body">
 										<center>
 											<h3>Question: <?php echo $quest['question']; ?></h3>
-											<h4>Answer: <?php echo $quest['answer'];?></h4>
+											<h4>Answer: <?php echo $quest['option1'];?></h4>
 											
 											<?php 
 												addtoExamBtn($quest['question_id'],$questDB);

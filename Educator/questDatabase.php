@@ -150,6 +150,15 @@ function translateType($type){
 	}
 }
 
+function oepanel($quest){
+	?>
+	<center>
+		<h3>Question: <?php echo $quest['question'];?><h3>
+		<h3>Answer: <?php echo $quest['option1'];?></h3>
+	</center>
+	<?php
+}
+
 
 ?>
 
@@ -205,12 +214,16 @@ function translateType($type){
 							elseif($quest['type_key']=='3'){
 								fbpanel($quest);
 							}
+							elseif($quest['type_key']=='4'){
+								oepanel($quest);
+							}
 							?>
 							<center>
 								<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align" disabled>
 									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 									Edit Question
 								</button>
+								
 								<?php addtoExamBtn($quest['question_id'],$questDB); ?>
 								
 								<button type="button" class="btn btn-default btn-lg" aria-label="Left Align" onclick="rmQuest(<?php echo $quest['question_id']?>)">

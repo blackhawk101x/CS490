@@ -34,13 +34,16 @@ $quest= get_object_vars($_SESSION['test'][$_SESSION['currQuest']]);
 		<script type="text/javascript" src="callHandler.js"></script>
 		<?php
 		if($quest['type_key']=='1'){
-			?><script type="text/javascript" src="mcView.js"></script> <?php
+			?><script type="text/javascript" src="mcView.js"></script><?php
 		}
 		elseif($quest['type_key']=='2'){
-			?><script type="text/javascript" src="tfView.js"></script> <?php
+			?><script type="text/javascript" src="tfView.js"></script><?php
 		}
 		elseif($quest['type_key']=='3'){
-			?><script type="text/javascript" src="fbView.js"></script> <?php
+			?><script type="text/javascript" src="fbView.js"></script><?php
+		}
+		elseif($quest['type_key']=='4'){
+			?><script type="text/javascript" src="oeView.js"></script><?php
 		}
 		elseif($done){
 			?>
@@ -89,6 +92,8 @@ $quest= get_object_vars($_SESSION['test'][$_SESSION['currQuest']]);
 				tfView($quest);
 			elseif($quest['type_key']=='3')
 				fbView($quest);
+			elseif($quest['type_key']=='4')
+				oeView($quest);
 			?>
 		</div>
 	</body>

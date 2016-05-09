@@ -182,6 +182,16 @@ function fbpanel($quest){
 	<?php
 }
 
+function oepanel($quest){
+	?>
+	<center>
+		<h3>Question: <?php echo $quest['question'];?><h3>
+		<h3>Answer: <?php echo $quest['option1'];?></h3>
+	</center>
+	<?php
+}
+
+
 ?>
 
 <html>
@@ -228,6 +238,10 @@ function fbpanel($quest){
 							}
 							elseif($quest['type_key']=='3'){
 								fbpanel($quest);
+							}
+							elseif($quest['type_key']=='4'){
+								oepanel($quest);
+								?><center><h3>You answered: <?php echo $stud["chosen_ans"];?></h3></center><?php
 							}
 							?>
 						</div>

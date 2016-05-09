@@ -133,4 +133,39 @@ function fbView($quest){
 	<form>
 	<?php
 }
+
+function oeView($quest){
+		?>
+	<form id="oeView">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h3>Open Ended</h3>
+				<center>
+					<h2><?php echo $quest['question']; ?></h2>
+					<hr>
+					<div class="row">
+						<div class="col-md-4">
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<input id="answer" type="text" class="form-control" placeholder="Answer" required>
+							</div>
+						</div>
+						<div class="col-md-4">
+						</div>
+						
+					</div>
+				</center>
+			</div>
+		</div>
+		<center>
+			<button type="submit" type="button" class="btn btn-primary btn-lg" aria-label="Left Align"  id="submitBtn">
+				<span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+				Next Question
+			</button>
+		<center>
+	<form>
+	<?php
+}
+
 ?>

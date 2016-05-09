@@ -170,6 +170,20 @@ function translateType($type){
 	}
 }
 
+function oepanel($quest){
+	?>
+	<center>
+		<h3>Question: <?php echo $quest['question'];?><h3>
+		<h3>Answer: <?php echo $quest['option1'];?></h3>
+		<button type="button" class="btn btn-primary btn-lg" aria-label="Left Align" disabled>
+			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+			Edit Question
+		</button>
+		<?php removeQuestTest($quest); ?>
+	</center>
+	<?php
+}
+
 ?>
 
 <html>
@@ -209,9 +223,7 @@ function translateType($type){
 				</div>
 			</div>
 			<br>
-			<?php	
-				echo var_dump($questList);
-				//echo var_dump($questList);
+			<?php
 				foreach($questList as $key=>$quest){
 					$quest=get_object_vars($quest);
 					?>
@@ -230,7 +242,7 @@ function translateType($type){
 								fbpanel($quest);
 							}
 							elseif($quest['type_key']=='4'){
-								echo var_dump($quest);
+								oepanel($quest);
 							}
 							?>
 						</div>
