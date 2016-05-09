@@ -34,7 +34,7 @@ window.onload=function(){
 	};
 	
 	document.getElementById("oeCh").onchange= function(){
-		alert("Not Setup yet");
+		toggleDisplay(document.getElementById("oeCh").checked,document.getElementsByClassName("oe"));
 	};
 	
 }
