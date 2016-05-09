@@ -92,7 +92,7 @@ if(isset($_SESSION['testId'])){
 										<center>
 											<h3>Question: <?php echo $quest['question']; ?></h3>
 											<h4>Answer: <?php echo $quest['option1'];?></h4>
-											
+											<h5>Points: <?php echo $quest['points']; ?></h5>
 											<?php 
 												addtoExamBtn($quest['question_id'],$questDB);
 											?>
