@@ -68,13 +68,14 @@ function mcActive($ans,$option){
 /*
 
 */
-function ansPanel($stud){
+function ansPanel($stud,$quest){
 	?><center><?php
 	if($stud['grade_student']!='0'){
 		?>
 			<div class="alert alert-success" role="alert">
 				<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
 				Good Job, You answered this question correctly. You recieved full credit for the question.
+				You received <?php echo $stud['grade_student']; ?> points out of <?php echo $quest['points'];?> points.
 			</div>
 		<?php
 	}
@@ -85,6 +86,7 @@ function ansPanel($stud){
 			<div id="messageContent">
 				<span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
 				You did not answer this question correctly.
+				You received <?php echo $stud['grade_student']; ?> points out of <?php echo $quest['points'];?>points.
 			</div>
 		</div>
 		<?php
@@ -216,7 +218,7 @@ function fbpanel($quest){
 							<h4>Question Number <?php echo $key+1;?></h4>
 							<?php
 							
-							ansPanel($stud);
+							ansPanel($stud,$quest);
 							//echo var_dump($quest);
 							if($quest['type_key']=='1'){
 								mcPanel($quest);
