@@ -86,7 +86,7 @@ function ansPanel($stud,$quest){
 			<div id="messageContent">
 				<span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
 				You did not answer this question correctly.
-				You received <?php echo $stud['grade_student']; ?> points out of <?php echo $quest['points'];?>points.
+				You received <?php echo $stud['grade_student']; ?> points out of <?php echo $quest['points'];?> points.
 			</div>
 		</div>
 		<?php
